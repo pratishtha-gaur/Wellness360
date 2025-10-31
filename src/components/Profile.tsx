@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { User, Target, Moon, Palette, Bell } from 'lucide-react';
 import { Card } from './ui/card';
@@ -8,6 +8,7 @@ import { Label } from './ui/label';
 import { Switch } from './ui/switch';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Avatar, AvatarFallback } from './ui/avatar';
+import { toast } from 'sonner';
 
 export function Profile() {
   const [darkMode, setDarkMode] = useState(true);
@@ -18,6 +19,77 @@ export function Profile() {
   const [weight, setWeight] = useState('70');
   const [height, setHeight] = useState('175');
   const [gender, setGender] = useState('male');
+  const [isSaving, setIsSaving] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Load existing profile by email
+  useEffect(() => {
+    const loadProfile = async () => {
+      if (!email) return;
+      setIsLoading(true);
+      try {
+        const res = await fetch(`/api/users/${encodeURIComponent(email)}`);
+        if (res.ok) {
+          const json = await res.json();
+          const data = json?.data;
+          if (data) {
+            setName(data.name ?? '');
+            setAge(String(data.age ?? ''));
+            setGender(data.gender ?? 'male');
+            setWeight(String(data.weight ?? ''));
+            setHeight(String(data.height ?? ''));
+            toast.success('Loaded profile');
+          }
+        }
+      } catch (_) {
+        // ignore load errors; user may be new
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    loadProfile();
+  }, [email]);
+
+  const onSave = async () => {
+    if (!email) {
+      toast.error('Email is required');
+      return;
+    }
+    setIsSaving(true);
+    const payload = {
+      name,
+      email,
+      age: Number(age) || 0,
+      gender,
+      weight: Number(weight) || 0,
+      height: Number(height) || 0,
+    };
+    try {
+      // Try update first
+      let res = await fetch(`/api/users/${encodeURIComponent(email)}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (res.status === 404) {
+        // Create if not exists
+        res = await fetch('/api/users', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+      }
+      if (!res.ok) {
+        const txt = await res.text();
+        throw new Error(txt || 'Failed to save');
+      }
+      toast.success('Profile saved');
+    } catch (e) {
+      toast.error('Failed to save profile');
+    } finally {
+      setIsSaving(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-emerald-950 to-teal-950 p-4 md:p-8">
@@ -49,7 +121,7 @@ export function Profile() {
               <div>
                 <h2 className="text-white text-2xl mb-1">{name}</h2>
                 <p className="text-white/60">Level 5 • 12 day streak 🔥</p>
-                <Button className="mt-2 bg-emerald-500 hover:bg-emerald-600" size="sm">
+                <Button className="mt-2 bg-emerald-500 hover:bg-emerald-600" size="sm" disabled>
                   Change Avatar
                 </Button>
               </div>
@@ -231,8 +303,8 @@ export function Profile() {
           transition={{ delay: 0.4 }}
           className="flex justify-end"
         >
-          <Button className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white px-8">
-            Save Changes
+          <Button onClick={onSave} disabled={isSaving || isLoading} className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white px-8">
+            {isSaving ? 'Saving...' : 'Save Changes'}
           </Button>
         </motion.div>
       </div>
