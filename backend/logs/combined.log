@@ -46,3 +46,34 @@
 2025-10-29 23:50:37:5037 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
 2025-10-29 23:50:37:5037 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
 2025-10-29 23:53:04:534 [32minfo[39m: [32mSIGINT received. Shutting down gracefully...[39m
+2025-10-31 00:13:25:1325 [31merror[39m: [31mFailed to connect to MongoDB: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017[39m
+2025-10-31 00:38:30:3830 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-10-31 00:42:36:4236 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-10-31 00:42:49:4249 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-10-31 00:47:34:4734 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-10-31 00:48:06:486 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-10-31 00:48:06:486 [32minfo[39m: [32m🚀 Server running on port 4000[39m
+2025-10-31 00:48:06:486 [32minfo[39m: [32m📊 Environment: development[39m
+2025-10-31 00:48:06:486 [32minfo[39m: [32m🌐 API URL: http://localhost:4000[39m
+2025-10-31 00:48:06:486 [32minfo[39m: [32m📖 Health Check: http://localhost:4000/api/health[39m
+2025-10-31 00:48:42:4842 [32minfo[39m: [32mGET / - ::1[39m
+2025-10-31 00:48:42:4842 [35mhttp[39m: [35m[0mGET / [32m200[0m 2.304 ms - 113[0m[39m
+2025-10-31 00:49:00:490 [32minfo[39m: [32mGET /api/health - ::1[39m
+2025-10-31 00:49:00:490 [35mhttp[39m: [35m[0mGET /api/health [32m200[0m 1.977 ms - 270[0m[39m
+2025-10-31 00:51:32:5132 [32minfo[39m: [32mSIGINT received. Shutting down gracefully...[39m
+2025-10-31 00:58:26:5826 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-10-31 00:58:26:5826 [32minfo[39m: [32m🚀 Server running on port 4000[39m
+2025-10-31 00:58:26:5826 [32minfo[39m: [32m📊 Environment: development[39m
+2025-10-31 00:58:26:5826 [32minfo[39m: [32m🌐 API URL: http://localhost:4000[39m
+2025-10-31 00:58:26:5826 [32minfo[39m: [32m📖 Health Check: http://localhost:4000/api/health[39m
+2025-10-31 00:59:57:5957 [32minfo[39m: [32mSIGINT received. Shutting down gracefully...[39m
+2025-10-31 01:00:12:012 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-10-31 09:51:51:5151 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-10-31 10:57:48:5748 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-10-31 11:02:09:29 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-10-31 11:04:34:434 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-10-31 11:04:34:434 [32minfo[39m: [32m🚀 Server running on port 5001[39m
+2025-10-31 11:04:34:434 [32minfo[39m: [32m📊 Environment: development[39m
+2025-10-31 11:04:34:434 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
+2025-10-31 11:04:34:434 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
+2025-10-31 11:08:38:838 [32minfo[39m: [32mSIGINT received. Shutting down gracefully...[39m

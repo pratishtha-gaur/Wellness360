@@ -55,6 +55,9 @@
       },
       "scripts": {
           "dev": "vite",
-          "build": "vite build"
+          "build": "vite build",
+          "dev:full": "bash scripts/dev.sh",
+          "build:all": "npm run build && npm --prefix backend run build",
+          "start": "npm --prefix backend run start"
       }
   }

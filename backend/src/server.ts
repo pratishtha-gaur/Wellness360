@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import express from 'express';
+import path from 'path';
 import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
@@ -27,7 +28,7 @@ class Server {
 
   constructor() {
     this.app = express();
-    this.port = parseInt(process.env.PORT || '5000', 10);
+    this.port = parseInt(process.env.PORT || '5001', 10);
     
     // Initialize server
     this.initializeMiddlewares();
@@ -91,16 +92,6 @@ class Server {
   }
 
   private initializeRoutes(): void {
-    // Health check route
-    this.app.get('/', (req, res) => {
-      res.json({
-        success: true,
-        message: 'Wellness360 API is running!',
-        version: '1.0.0',
-        timestamp: new Date().toISOString(),
-      });
-    });
-
     // API routes
     this.app.use('/api/users', userRoutes);
     this.app.use('/api/goals', goalsRoutes);
@@ -108,8 +99,17 @@ class Server {
     this.app.use('/api/health', healthRoutes);
     this.app.use('/api/xp', xpRoutes);
 
-    // 404 handler for undefined routes
-    this.app.use('*', notFound);
+    // 404 handler for undefined API routes only
+    this.app.use('/api/*', notFound);
+
+    // Serve frontend build in production
+    const clientBuildPath = path.resolve(__dirname, '../../build');
+    this.app.use(express.static(clientBuildPath));
+
+    // SPA fallback: send index.html for all non-API routes
+    this.app.get('*', (req, res) => {
+      res.sendFile(path.join(clientBuildPath, 'index.html'));
+    });
   }
 
   private initializeErrorHandling(): void {

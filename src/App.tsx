@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Home, Activity, BarChart3, User } from "lucide-react";
 import { OnboardingPage } from "./components/OnboardingPage";
 import { Dashboard } from "./components/Dashboard";
@@ -6,6 +6,7 @@ import { DietFitness } from "./components/DietFitness";
 import { Analytics } from "./components/Analytics";
 import { Profile } from "./components/Profile";
 import { Toaster } from "./components/ui/sonner";
+import { toast } from "sonner";
 
 type Page = "dashboard" | "diet" | "analytics" | "profile";
 
@@ -13,6 +14,24 @@ export default function App() {
   const [currentPage, setCurrentPage] =
     useState<Page>("dashboard");
   const [userName, setUserName] = useState<string | null>(null);
+
+  useEffect(() => {
+    const checkHealth = async () => {
+      try {
+        const res = await fetch("/api/health");
+        if (!res.ok) throw new Error("Health check failed");
+        const data = await res.json();
+        if (data?.status === "ok") {
+          toast.success("Connected to backend API");
+        } else {
+          toast.message("Backend responded", { description: JSON.stringify(data) });
+        }
+      } catch (e) {
+        toast.error("Backend API is not reachable");
+      }
+    };
+    checkHealth();
+  }, []);
 
   const handleOnboardingComplete = (name: string) => {
     setUserName(name);

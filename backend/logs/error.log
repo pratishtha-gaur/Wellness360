@@ -5,3 +5,12 @@
 2025-10-29 23:12:06:126 [31merror[39m: [31mUNCAUGHT EXCEPTION! 💥 Shutting down...[39m
 2025-10-29 23:12:43:1243 [31merror[39m: [31mUNCAUGHT EXCEPTION! 💥 Shutting down...[39m
 2025-10-29 23:18:12:1812 [31merror[39m: [31mUNCAUGHT EXCEPTION! 💥 Shutting down...[39m
+2025-10-31 00:13:25:1325 [31merror[39m: [31mFailed to connect to MongoDB: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017[39m
+2025-10-31 00:38:30:3830 [31merror[39m: [31mUNCAUGHT EXCEPTION! 💥 Shutting down...[39m
+2025-10-31 00:42:36:4236 [31merror[39m: [31mUNCAUGHT EXCEPTION! 💥 Shutting down...[39m
+2025-10-31 00:42:49:4249 [31merror[39m: [31mUNCAUGHT EXCEPTION! 💥 Shutting down...[39m
+2025-10-31 00:47:34:4734 [31merror[39m: [31mUNCAUGHT EXCEPTION! 💥 Shutting down...[39m
+2025-10-31 01:00:12:012 [31merror[39m: [31mUNCAUGHT EXCEPTION! 💥 Shutting down...[39m
+2025-10-31 09:51:51:5151 [31merror[39m: [31mUNCAUGHT EXCEPTION! 💥 Shutting down...[39m
+2025-10-31 10:57:48:5748 [31merror[39m: [31mUNCAUGHT EXCEPTION! 💥 Shutting down...[39m
+2025-10-31 11:02:09:29 [31merror[39m: [31mUNCAUGHT EXCEPTION! 💥 Shutting down...[39m
