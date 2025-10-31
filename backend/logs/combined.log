@@ -132,3 +132,118 @@
 2025-10-31 15:31:48:3148 [32minfo[39m: [32mPUT /api/users/pratishtha%40healthbuddy.com - ::1[39m
 2025-10-31 15:31:48:3148 [32minfo[39m: [32mUser profile updated: pratishtha@healthbuddy.com[39m
 2025-10-31 15:31:48:3148 [35mhttp[39m: [35m[0mPUT /api/users/pratishtha%40healthbuddy.com [32m200[0m 8.151 ms - 302[0m[39m
+2025-10-31 15:42:42:4242 [32minfo[39m: [32mGET /api/users/lucky%40healthbuddy.com - ::1[39m
+2025-10-31 15:42:42:4242 [35mhttp[39m: [35m[0mGET /api/users/lucky%40healthbuddy.com [33m404[0m 7.520 ms - 350[0m[39m
+2025-10-31 15:57:17:5717 [32minfo[39m: [32mGET /api/users/lucky%40healthbuddy.com - ::1[39m
+2025-10-31 15:57:17:5717 [35mhttp[39m: [35m[0mGET /api/users/lucky%40healthbuddy.com [33m404[0m 2.723 ms - 350[0m[39m
+2025-10-31 16:03:44:344 [32minfo[39m: [32mGET /api/users/lucky%40healthbuddy.com - ::1[39m
+2025-10-31 16:03:44:344 [35mhttp[39m: [35m[0mGET /api/users/lucky%40healthbuddy.com [33m404[0m 2.415 ms - 350[0m[39m
+2025-10-31 16:03:50:350 [32minfo[39m: [32mGET /api/users/%40healthbuddy.com - ::1[39m
+2025-10-31 16:03:50:350 [35mhttp[39m: [35m[0mGET /api/users/%40healthbuddy.com [33m404[0m 3.791 ms - 350[0m[39m
+2025-10-31 16:03:50:350 [32minfo[39m: [32mGET /api/users/p%40healthbuddy.com - ::1[39m
+2025-10-31 16:03:50:350 [35mhttp[39m: [35m[0mGET /api/users/p%40healthbuddy.com [33m404[0m 3.499 ms - 350[0m[39m
+2025-10-31 16:03:51:351 [32minfo[39m: [32mGET /api/users/pr%40healthbuddy.com - ::1[39m
+2025-10-31 16:03:51:351 [35mhttp[39m: [35m[0mGET /api/users/pr%40healthbuddy.com [33m404[0m 3.968 ms - 350[0m[39m
+2025-10-31 16:03:51:351 [32minfo[39m: [32mGET /api/users/pra%40healthbuddy.com - ::1[39m
+2025-10-31 16:03:51:351 [35mhttp[39m: [35m[0mGET /api/users/pra%40healthbuddy.com [33m404[0m 2.761 ms - 350[0m[39m
+2025-10-31 16:03:51:351 [32minfo[39m: [32mGET /api/users/prat%40healthbuddy.com - ::1[39m
+2025-10-31 16:03:51:351 [35mhttp[39m: [35m[0mGET /api/users/prat%40healthbuddy.com [33m404[0m 2.861 ms - 350[0m[39m
+2025-10-31 16:03:51:351 [32minfo[39m: [32mGET /api/users/prati%40healthbuddy.com - ::1[39m
+2025-10-31 16:03:51:351 [35mhttp[39m: [35m[0mGET /api/users/prati%40healthbuddy.com [33m404[0m 3.201 ms - 350[0m[39m
+2025-10-31 16:03:52:352 [32minfo[39m: [32mGET /api/users/pratis%40healthbuddy.com - ::1[39m
+2025-10-31 16:03:52:352 [35mhttp[39m: [35m[0mGET /api/users/pratis%40healthbuddy.com [33m404[0m 2.899 ms - 350[0m[39m
+2025-10-31 16:03:52:352 [32minfo[39m: [32mGET /api/users/pratish%40healthbuddy.com - ::1[39m
+2025-10-31 16:03:52:352 [35mhttp[39m: [35m[0mGET /api/users/pratish%40healthbuddy.com [33m404[0m 3.033 ms - 350[0m[39m
+2025-10-31 16:03:53:353 [32minfo[39m: [32mGET /api/users/pratisht%40healthbuddy.com - ::1[39m
+2025-10-31 16:03:53:353 [35mhttp[39m: [35m[0mGET /api/users/pratisht%40healthbuddy.com [33m404[0m 3.178 ms - 350[0m[39m
+2025-10-31 16:03:53:353 [32minfo[39m: [32mGET /api/users/pratishth%40healthbuddy.com - ::1[39m
+2025-10-31 16:03:53:353 [35mhttp[39m: [35m[0mGET /api/users/pratishth%40healthbuddy.com [33m404[0m 3.238 ms - 350[0m[39m
+2025-10-31 16:03:53:353 [32minfo[39m: [32mGET /api/users/pratishtha%40healthbuddy.com - ::1[39m
+2025-10-31 16:03:53:353 [35mhttp[39m: [35m[0mGET /api/users/pratishtha%40healthbuddy.com [32m200[0m 4.000 ms - 304[0m[39m
+2025-10-31 16:03:58:358 [32minfo[39m: [32mPUT /api/users/pratishtha%40healthbuddy.com - ::1[39m
+2025-10-31 16:03:58:358 [32minfo[39m: [32mUser profile updated: pratishtha@healthbuddy.com[39m
+2025-10-31 16:03:58:358 [35mhttp[39m: [35m[0mPUT /api/users/pratishtha%40healthbuddy.com [32m200[0m 6.804 ms - 302[0m[39m
+2025-10-31 16:04:00:40 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-10-31 16:04:00:40 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [33m404[0m 9.404 ms - 394[0m[39m
+2025-10-31 16:05:25:525 [32minfo[39m: [32mPUT /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-10-31 16:05:25:525 [35mhttp[39m: [35m[0mPUT /api/goals/pratishtha%40healthbuddy.com [33m404[0m 4.273 ms - 397[0m[39m
+2025-10-31 16:05:25:525 [32minfo[39m: [32mPOST /api/goals - ::1[39m
+2025-10-31 16:05:25:525 [32minfo[39m: [32mDaily goals created for user: pratishtha@healthbuddy.com[39m
+2025-10-31 16:05:25:525 [35mhttp[39m: [35m[0mPOST /api/goals [32m201[0m 14.104 ms - 424[0m[39m
+2025-10-31 16:05:25:525 [32minfo[39m: [32mPUT /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-10-31 16:05:25:525 [32minfo[39m: [32mDaily goals updated for user: pratishtha@healthbuddy.com[39m
+2025-10-31 16:05:25:525 [35mhttp[39m: [35m[0mPUT /api/goals/pratishtha%40healthbuddy.com [32m200[0m 8.211 ms - 487[0m[39m
+2025-10-31 16:06:16:616 [32minfo[39m: [32mPUT /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-10-31 16:06:16:616 [32minfo[39m: [32mDaily goals updated for user: pratishtha@healthbuddy.com[39m
+2025-10-31 16:06:16:616 [35mhttp[39m: [35m[0mPUT /api/goals/pratishtha%40healthbuddy.com [32m200[0m 5.330 ms - 487[0m[39m
+2025-10-31 16:07:55:755 [32minfo[39m: [32mSIGTERM received. Shutting down gracefully...[39m
+2025-10-31 16:07:56:756 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-10-31 16:07:56:756 [32minfo[39m: [32m🚀 Server running on port 5001[39m
+2025-10-31 16:07:56:756 [32minfo[39m: [32m📊 Environment: development[39m
+2025-10-31 16:07:56:756 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
+2025-10-31 16:07:56:756 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
+2025-10-31 16:08:03:83 [32minfo[39m: [32mSIGTERM received. Shutting down gracefully...[39m
+2025-10-31 16:08:04:84 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-10-31 16:08:04:84 [32minfo[39m: [32m🚀 Server running on port 5001[39m
+2025-10-31 16:08:04:84 [32minfo[39m: [32m📊 Environment: development[39m
+2025-10-31 16:08:04:84 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
+2025-10-31 16:08:04:84 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
+2025-10-31 16:08:14:814 [32minfo[39m: [32mSIGTERM received. Shutting down gracefully...[39m
+2025-10-31 16:08:14:814 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-10-31 16:08:14:814 [32minfo[39m: [32m🚀 Server running on port 5001[39m
+2025-10-31 16:08:14:814 [32minfo[39m: [32m📊 Environment: development[39m
+2025-10-31 16:08:14:814 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
+2025-10-31 16:08:14:814 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
+2025-10-31 16:08:27:827 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-10-31 16:08:27:827 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [32m200[0m 7.680 ms - 507[0m[39m
+2025-10-31 16:08:34:834 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-10-31 16:08:34:834 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [36m304[0m 4.870 ms - -[0m[39m
+2025-10-31 16:08:45:845 [32minfo[39m: [32mSIGTERM received. Shutting down gracefully...[39m
+2025-10-31 16:08:45:845 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-10-31 16:08:45:845 [32minfo[39m: [32m🚀 Server running on port 5001[39m
+2025-10-31 16:08:45:845 [32minfo[39m: [32m📊 Environment: development[39m
+2025-10-31 16:08:45:845 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
+2025-10-31 16:08:45:845 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
+2025-10-31 16:08:46:846 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-10-31 16:08:46:846 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [36m304[0m 15.542 ms - -[0m[39m
+2025-10-31 16:08:53:853 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-10-31 16:08:53:853 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [36m304[0m 4.981 ms - -[0m[39m
+2025-10-31 16:09:00:90 [32minfo[39m: [32mGET /api/users/lucky%40healthbuddy.com - ::1[39m
+2025-10-31 16:09:00:90 [35mhttp[39m: [35m[0mGET /api/users/lucky%40healthbuddy.com [33m404[0m 6.006 ms - 350[0m[39m
+2025-10-31 16:09:16:916 [32minfo[39m: [32mGET /api/users/%40healthbuddy.com - ::1[39m
+2025-10-31 16:09:16:916 [35mhttp[39m: [35m[0mGET /api/users/%40healthbuddy.com [33m404[0m 2.529 ms - 350[0m[39m
+2025-10-31 16:09:17:917 [32minfo[39m: [32mGET /api/users/p%40healthbuddy.com - ::1[39m
+2025-10-31 16:09:17:917 [35mhttp[39m: [35m[0mGET /api/users/p%40healthbuddy.com [33m404[0m 4.320 ms - 350[0m[39m
+2025-10-31 16:09:17:917 [32minfo[39m: [32mGET /api/users/pr%40healthbuddy.com - ::1[39m
+2025-10-31 16:09:17:917 [35mhttp[39m: [35m[0mGET /api/users/pr%40healthbuddy.com [33m404[0m 3.727 ms - 350[0m[39m
+2025-10-31 16:09:17:917 [32minfo[39m: [32mGET /api/users/pra%40healthbuddy.com - ::1[39m
+2025-10-31 16:09:17:917 [35mhttp[39m: [35m[0mGET /api/users/pra%40healthbuddy.com [33m404[0m 1.510 ms - 350[0m[39m
+2025-10-31 16:09:17:917 [32minfo[39m: [32mGET /api/users/prat%40healthbuddy.com - ::1[39m
+2025-10-31 16:09:17:917 [35mhttp[39m: [35m[0mGET /api/users/prat%40healthbuddy.com [33m404[0m 2.745 ms - 350[0m[39m
+2025-10-31 16:09:18:918 [32minfo[39m: [32mGET /api/users/prati%40healthbuddy.com - ::1[39m
+2025-10-31 16:09:18:918 [35mhttp[39m: [35m[0mGET /api/users/prati%40healthbuddy.com [33m404[0m 3.598 ms - 350[0m[39m
+2025-10-31 16:09:18:918 [32minfo[39m: [32mGET /api/users/pratis%40healthbuddy.com - ::1[39m
+2025-10-31 16:09:18:918 [35mhttp[39m: [35m[0mGET /api/users/pratis%40healthbuddy.com [33m404[0m 4.513 ms - 350[0m[39m
+2025-10-31 16:09:18:918 [32minfo[39m: [32mGET /api/users/pratish%40healthbuddy.com - ::1[39m
+2025-10-31 16:09:18:918 [35mhttp[39m: [35m[0mGET /api/users/pratish%40healthbuddy.com [33m404[0m 3.516 ms - 350[0m[39m
+2025-10-31 16:09:18:918 [32minfo[39m: [32mGET /api/users/pratisht%40healthbuddy.com - ::1[39m
+2025-10-31 16:09:18:918 [35mhttp[39m: [35m[0mGET /api/users/pratisht%40healthbuddy.com [33m404[0m 3.671 ms - 350[0m[39m
+2025-10-31 16:09:18:918 [32minfo[39m: [32mGET /api/users/pratishth%40healthbuddy.com - ::1[39m
+2025-10-31 16:09:18:918 [35mhttp[39m: [35m[0mGET /api/users/pratishth%40healthbuddy.com [33m404[0m 3.211 ms - 350[0m[39m
+2025-10-31 16:09:18:918 [32minfo[39m: [32mGET /api/users/pratishtha%40healthbuddy.com - ::1[39m
+2025-10-31 16:09:18:918 [35mhttp[39m: [35m[0mGET /api/users/pratishtha%40healthbuddy.com [32m200[0m 3.578 ms - 304[0m[39m
+2025-10-31 16:09:21:921 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-10-31 16:09:21:921 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [36m304[0m 2.438 ms - -[0m[39m
+2025-10-31 16:09:49:949 [32minfo[39m: [32mPUT /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-10-31 16:09:49:949 [32minfo[39m: [32mDaily goals updated for user: pratishtha@healthbuddy.com[39m
+2025-10-31 16:09:49:949 [35mhttp[39m: [35m[0mPUT /api/goals/pratishtha%40healthbuddy.com [32m200[0m 17.059 ms - 493[0m[39m
+2025-10-31 16:10:05:105 [32minfo[39m: [32mPUT /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-10-31 16:10:05:105 [32minfo[39m: [32mDaily goals updated for user: pratishtha@healthbuddy.com[39m
+2025-10-31 16:10:05:105 [35mhttp[39m: [35m[0mPUT /api/goals/pratishtha%40healthbuddy.com [32m200[0m 6.795 ms - 510[0m[39m
+2025-10-31 16:10:45:1045 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-10-31 16:10:45:1045 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [32m200[0m 3.322 ms - 512[0m[39m
+2025-10-31 16:10:46:1046 [32minfo[39m: [32mGET /api/users/lucky%40healthbuddy.com - ::1[39m
+2025-10-31 16:10:46:1046 [35mhttp[39m: [35m[0mGET /api/users/lucky%40healthbuddy.com [33m404[0m 2.946 ms - 350[0m[39m
+2025-10-31 16:10:48:1048 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-10-31 16:10:48:1048 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [36m304[0m 2.255 ms - -[0m[39m
+2025-10-31 16:11:43:1143 [32minfo[39m: [32mSIGINT received. Shutting down gracefully...[39m

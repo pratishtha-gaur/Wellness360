@@ -83,6 +83,7 @@ export function Profile() {
         const txt = await res.text();
         throw new Error(txt || 'Failed to save');
       }
+      try { localStorage.setItem('userEmail', email); } catch {}
       toast.success('Profile saved');
     } catch (e) {
       toast.error('Failed to save profile');

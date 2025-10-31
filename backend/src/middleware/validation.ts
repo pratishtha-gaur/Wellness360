@@ -129,6 +129,11 @@ export const validateUpdateDailyGoals: ValidationChain[] = [
     .isInt({ min: 800, max: 5000 })
     .withMessage('Daily calorie target must be between 800 and 5000 calories'),
   
+  body('plannedTasks')
+    .optional()
+    .isArray()
+    .withMessage('Planned tasks must be an array'),
+  
   body('completedTasks')
     .optional()
     .isArray()

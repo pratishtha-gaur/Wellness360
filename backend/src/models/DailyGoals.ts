@@ -72,6 +72,10 @@ const dailyGoalsSchema = new Schema<IDailyGoalsDocument>({
     required: [true, 'Date is required'],
     default: Date.now
   },
+  plannedTasks: [{
+    type: String,
+    trim: true
+  }],
   completedTasks: [{
     type: String,
     trim: true

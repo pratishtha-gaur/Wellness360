@@ -34,7 +34,9 @@ export class GoalsController {
         sleepHours,
         dietType,
         dailyCalorieTarget,
-        date: today
+        date: today,
+        plannedTasks: [],
+        completedTasks: []
       });
 
       await dailyGoals.save();
@@ -86,7 +88,7 @@ export class GoalsController {
   ): Promise<void> {
     try {
       const { email } = req.params;
-      const updateData = req.body;
+      const updateData = req.body as Partial<UpdateDailyGoalsRequest> & { plannedTasks?: string[]; completedTasks?: string[] };
       const { date } = req.query;
 
       const targetDate = date ? new Date(date as string) : new Date();
@@ -96,8 +98,13 @@ export class GoalsController {
         throw new AppError('Daily goals not found for the specified date', 404);
       }
 
-      // Update daily goals
-      Object.assign(dailyGoals, updateData);
+      // Update daily goals including planned/completed tasks
+      if (typeof updateData.waterIntake !== 'undefined') dailyGoals.waterIntake = updateData.waterIntake as number;
+      if (typeof updateData.sleepHours !== 'undefined') dailyGoals.sleepHours = updateData.sleepHours as number;
+      if (typeof updateData.dietType !== 'undefined') dailyGoals.dietType = updateData.dietType as any;
+      if (typeof updateData.dailyCalorieTarget !== 'undefined') dailyGoals.dailyCalorieTarget = updateData.dailyCalorieTarget as number;
+      if (Array.isArray((updateData as any).plannedTasks)) dailyGoals.plannedTasks = (updateData as any).plannedTasks as string[];
+      if (Array.isArray(updateData.completedTasks)) dailyGoals.completedTasks = updateData.completedTasks;
       await dailyGoals.save();
 
       logger.info(`Daily goals updated for user: ${email}`);

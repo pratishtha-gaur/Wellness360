@@ -20,6 +20,7 @@ export interface IDailyGoals {
   xp: number;
   level: number;
   date: Date;
+  plannedTasks: string[];
   completedTasks: string[];
   createdAt?: Date;
   updatedAt?: Date;
@@ -88,6 +89,7 @@ export interface UpdateDailyGoalsRequest {
   sleepHours?: number;
   dietType?: 'vegetarian' | 'vegan' | 'omnivore' | 'keto' | 'paleo' | 'mediterranean' | 'other';
   dailyCalorieTarget?: number;
+  plannedTasks?: string[];
   completedTasks?: string[];
 }
 
