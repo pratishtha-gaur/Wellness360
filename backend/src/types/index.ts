@@ -6,6 +6,8 @@ export interface IUserProfile {
   gender: 'male' | 'female' | 'other' | 'prefer-not-to-say';
   weight: number; // in kg
   height: number; // in cm
+  dietType?: 'vegetarian' | 'vegan' | 'omnivore' | 'keto' | 'paleo' | 'mediterranean' | 'balanced' | 'other';
+  dailyCalorieTarget?: number;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -24,6 +26,42 @@ export interface IDailyGoals {
   completedTasks: string[];
   createdAt?: Date;
   updatedAt?: Date;
+}
+
+// Meal Plan Types
+export interface IMeal {
+  time: string; // e.g., 'Breakfast', 'Lunch', 'Dinner', 'Snack'
+  name: string;
+  calories: number;
+  protein: number;
+  carbs?: number;
+  fats?: number;
+}
+
+// Workout Plan Types
+export interface IWorkout {
+  name: string;
+  sets: number;
+  reps: number | string;
+  icon: string;
+  description?: string;
+  muscleGroups?: string[];
+}
+
+// Meal and Workout Recommendations
+export interface IMealWorkoutPlan {
+  meals: IMeal[];
+  homeWorkouts: IWorkout[];
+  gymWorkouts: IWorkout[];
+  macros: {
+    protein: number;
+    carbs: number;
+    fats: number;
+    proteinPercent: number;
+    carbsPercent: number;
+    fatsPercent: number;
+  };
+  generatedAt: Date;
 }
 
 // Wellness Plan Types
@@ -66,6 +104,8 @@ export interface CreateUserProfileRequest {
   gender: 'male' | 'female' | 'other' | 'prefer-not-to-say';
   weight: number;
   height: number;
+  dietType?: 'vegetarian' | 'vegan' | 'omnivore' | 'keto' | 'paleo' | 'mediterranean' | 'balanced' | 'other';
+  dailyCalorieTarget?: number;
 }
 
 export interface UpdateUserProfileRequest {
@@ -74,6 +114,8 @@ export interface UpdateUserProfileRequest {
   gender?: 'male' | 'female' | 'other' | 'prefer-not-to-say';
   weight?: number;
   height?: number;
+  dietType?: 'vegetarian' | 'vegan' | 'omnivore' | 'keto' | 'paleo' | 'mediterranean' | 'balanced' | 'other';
+  dailyCalorieTarget?: number;
 }
 
 export interface CreateDailyGoalsRequest {

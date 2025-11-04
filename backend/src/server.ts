@@ -1,6 +1,18 @@
 // Load environment variables FIRST
 import dotenv from 'dotenv';
-dotenv.config();
+import path from 'path';
+
+// Load .env file from backend directory
+const envPath = path.resolve(__dirname, '../.env');
+dotenv.config({ path: envPath });
+
+// Log environment loading status
+console.log(`📁 Loading .env from: ${envPath}`);
+console.log(`🔑 GOOGLE_API_KEY loaded: ${!!process.env.GOOGLE_API_KEY}`);
+if (process.env.GOOGLE_API_KEY) {
+  console.log(`🔑 GOOGLE_API_KEY length: ${process.env.GOOGLE_API_KEY.length}`);
+  console.log(`🔑 GOOGLE_API_KEY starts with: ${process.env.GOOGLE_API_KEY.substring(0, 10)}...`);
+}
 
 import express from 'express';
 import path from 'path';

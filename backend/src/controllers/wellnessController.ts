@@ -3,7 +3,7 @@ import { UserProfile, DailyGoals } from '@/models';
 import { aiService } from '@/services/aiService';
 import { AppError } from '@/middleware/errorHandler';
 import { logger } from '@/utils/logger';
-import { ApiResponse, IWellnessPlan } from '@/types';
+import { ApiResponse, IWellnessPlan, IMealWorkoutPlan } from '@/types';
 
 export class WellnessController {
   // Generate personalized wellness plan
@@ -178,6 +178,67 @@ export class WellnessController {
     }
   }
 
+  // Get personalized meal and workout plan
+  public static async getMealWorkoutPlan(
+    req: Request,
+    res: Response<ApiResponse>,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const { email } = req.params;
+
+      // Get user profile
+      let userProfile = await UserProfile.findByEmail(email);
+      
+      // If user profile doesn't exist, create a default one
+      if (!userProfile) {
+        logger.warn(`User profile not found for ${email}, creating default profile`);
+        // Create a minimal user profile with defaults
+        userProfile = new UserProfile({
+          name: email.split('@')[0] || 'User',
+          email: email,
+          age: 25,
+          gender: 'male',
+          weight: 70,
+          height: 175,
+          dietType: 'balanced',
+          dailyCalorieTarget: 2000
+        });
+        await userProfile.save();
+      }
+
+      // Get daily goals for today (optional, to use latest goals if available)
+      const dailyGoals = await DailyGoals.findByUserAndDate(email, new Date());
+
+      // Use daily goals or fallback to user profile defaults
+      const dietType = dailyGoals?.dietType || userProfile.dietType || 'balanced';
+      const dailyCalorieTarget = dailyGoals?.dailyCalorieTarget || userProfile.dailyCalorieTarget || 2000;
+
+      // Generate meal and workout plan (service handles timeout and fallback internally)
+      const mealWorkoutPlan: IMealWorkoutPlan = await aiService.generateMealWorkoutPlan(
+        userProfile,
+        dailyCalorieTarget,
+        dietType
+      );
+
+      // Log whether AI was used or fallback
+      const usedAI = mealWorkoutPlan.generatedAt && 
+        (mealWorkoutPlan.meals.length > 0 && 
+         mealWorkoutPlan.meals[0].name !== 'Oatmeal with berries & almonds'); // Simple check for AI vs fallback
+      
+      logger.info(`Meal and workout plan generated for user: ${email} (${usedAI ? 'AI-generated' : 'fallback'})`);
+
+      res.json({
+        success: true,
+        message: 'Meal and workout plan generated successfully',
+        data: mealWorkoutPlan
+      });
+    } catch (error) {
+      logger.error('Error generating meal/workout plan:', error);
+      next(error);
+    }
+  }
+
   // Check AI service status
   public static async getAIServiceStatus(
     req: Request,
@@ -185,6 +246,7 @@ export class WellnessController {
     next: NextFunction
   ): Promise<void> {
     try {
+      const apiKey = process.env.GOOGLE_API_KEY;
       const isAvailable = await aiService.isAvailable();
 
       res.json({
@@ -192,6 +254,9 @@ export class WellnessController {
         message: 'AI service status retrieved successfully',
         data: {
           available: isAvailable,
+          apiKeyConfigured: !!apiKey && apiKey.trim().length > 0,
+          apiKeyLength: apiKey ? apiKey.length : 0,
+          apiKeyPrefix: apiKey ? apiKey.substring(0, 10) + '...' : 'N/A',
           timestamp: new Date().toISOString()
         }
       });

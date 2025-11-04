@@ -1,7 +1,9 @@
 import dotenv from 'dotenv';
+import path from 'path';
 
-// Load environment variables
-dotenv.config();
+// Load environment variables from backend directory
+const envPath = path.resolve(__dirname, '../.env');
+dotenv.config({ path: envPath });
 
 // Environment configuration interface
 interface EnvironmentConfig {
@@ -43,14 +45,22 @@ interface EnvironmentConfig {
 const validateEnvironment = (): void => {
   const requiredVars = [
     'MONGODB_URI',
-    'JWT_SECRET',
-    'GOOGLE_API_KEY'
+    'JWT_SECRET'
+    // Note: GOOGLE_API_KEY is optional - AI features will use fallback if not set
   ];
 
   const missingVars = requiredVars.filter(varName => !process.env[varName]);
   
   if (missingVars.length > 0) {
     throw new Error(`Missing required environment variables: ${missingVars.join(', ')}`);
+  }
+  
+  // Warn if GOOGLE_API_KEY is missing (non-fatal)
+  if (!process.env.GOOGLE_API_KEY || process.env.GOOGLE_API_KEY.trim().length === 0) {
+    console.warn('⚠️  WARNING: GOOGLE_API_KEY is not set. AI features will be disabled.');
+    console.warn('⚠️  To enable AI-generated meal/workout plans, add GOOGLE_API_KEY to your .env file');
+  } else {
+    console.log('✅ GOOGLE_API_KEY is configured');
   }
 };
 

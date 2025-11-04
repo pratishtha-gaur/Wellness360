@@ -12,7 +12,7 @@ export class UserController {
     next: NextFunction
   ): Promise<void> {
     try {
-      const { name, email, age, gender, weight, height } = req.body;
+      const { name, email, age, gender, weight, height, dietType, dailyCalorieTarget } = req.body;
 
       // Check if user already exists
       const existingUser = await UserProfile.findByEmail(email);
@@ -27,7 +27,9 @@ export class UserController {
         age,
         gender,
         weight,
-        height
+        height,
+        dietType,
+        dailyCalorieTarget
       });
 
       await userProfile.save();

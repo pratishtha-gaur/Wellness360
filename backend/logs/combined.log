@@ -247,3 +247,434 @@
 2025-10-31 16:10:48:1048 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
 2025-10-31 16:10:48:1048 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [36m304[0m 2.255 ms - -[0m[39m
 2025-10-31 16:11:43:1143 [32minfo[39m: [32mSIGINT received. Shutting down gracefully...[39m
+2025-11-04 22:51:50:5150 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-11-04 22:51:50:5150 [32minfo[39m: [32m🚀 Server running on port 5001[39m
+2025-11-04 22:51:50:5150 [32minfo[39m: [32m📊 Environment: development[39m
+2025-11-04 22:51:50:5150 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
+2025-11-04 22:51:50:5150 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
+2025-11-04 22:51:51:5151 [32minfo[39m: [32mGET /api/health - ::1[39m
+2025-11-04 22:51:51:5151 [35mhttp[39m: [35m[0mGET /api/health [32m200[0m 2.924 ms - 270[0m[39m
+2025-11-04 22:52:30:5230 [32minfo[39m: [32mSIGINT received. Shutting down gracefully...[39m
+2025-11-04 22:52:33:5233 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-11-04 22:52:33:5233 [32minfo[39m: [32m🚀 Server running on port 5001[39m
+2025-11-04 22:52:33:5233 [32minfo[39m: [32m📊 Environment: development[39m
+2025-11-04 22:52:33:5233 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
+2025-11-04 22:52:33:5233 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
+2025-11-04 22:52:52:5252 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 22:52:52:5252 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [33m404[0m 22.713 ms - 394[0m[39m
+2025-11-04 22:54:30:5430 [32minfo[39m: [32mGET /api/users/lucky%40healthbuddy.com - ::1[39m
+2025-11-04 22:54:30:5430 [35mhttp[39m: [35m[0mGET /api/users/lucky%40healthbuddy.com [33m404[0m 7.494 ms - 350[0m[39m
+2025-11-04 22:55:59:5559 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 22:55:59:5559 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [33m404[0m 3.009 ms - 394[0m[39m
+2025-11-04 22:56:10:5610 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 22:56:10:5610 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [33m404[0m 4.616 ms - 394[0m[39m
+2025-11-04 22:57:30:5730 [32minfo[39m: [32mGET /api/users/lucky%40healthbuddy.com - ::1[39m
+2025-11-04 22:57:30:5730 [35mhttp[39m: [35m[0mGET /api/users/lucky%40healthbuddy.com [33m404[0m 2.560 ms - 350[0m[39m
+2025-11-04 23:02:20:220 [32minfo[39m: [32mSIGINT received. Shutting down gracefully...[39m
+2025-11-04 23:07:11:711 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-11-04 23:07:11:711 [32minfo[39m: [32m🚀 Server running on port 5001[39m
+2025-11-04 23:07:11:711 [32minfo[39m: [32m📊 Environment: development[39m
+2025-11-04 23:07:11:711 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
+2025-11-04 23:07:11:711 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
+2025-11-04 23:09:45:945 [32minfo[39m: [32mSIGINT received. Shutting down gracefully...[39m
+2025-11-04 23:09:51:951 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-11-04 23:09:51:951 [32minfo[39m: [32m🚀 Server running on port 5001[39m
+2025-11-04 23:09:51:951 [32minfo[39m: [32m📊 Environment: development[39m
+2025-11-04 23:09:51:951 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
+2025-11-04 23:09:51:951 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
+2025-11-04 23:10:02:102 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 23:10:02:102 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [33m404[0m 10.968 ms - 394[0m[39m
+2025-11-04 23:10:04:104 [32minfo[39m: [32mGET /api/users/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 23:10:04:104 [35mhttp[39m: [35m[0mGET /api/users/pratishtha%40healthbuddy.com [36m304[0m 9.329 ms - -[0m[39m
+2025-11-04 23:11:50:1150 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 23:11:50:1150 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [33m404[0m 3.064 ms - 394[0m[39m
+2025-11-04 23:11:53:1153 [32minfo[39m: [32mGET /api/users/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 23:11:53:1153 [35mhttp[39m: [35m[0mGET /api/users/pratishtha%40healthbuddy.com [36m304[0m 3.458 ms - -[0m[39m
+2025-11-04 23:12:53:1253 [32minfo[39m: [32mSIGINT received. Shutting down gracefully...[39m
+2025-11-04 23:27:04:274 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-11-04 23:27:04:274 [32minfo[39m: [32m🚀 Server running on port 5001[39m
+2025-11-04 23:27:04:274 [32minfo[39m: [32m📊 Environment: development[39m
+2025-11-04 23:27:04:274 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
+2025-11-04 23:27:04:274 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
+2025-11-04 23:27:11:2711 [32minfo[39m: [32mGET /api/users/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 23:27:11:2711 [35mhttp[39m: [35m[0mGET /api/users/pratishtha%40healthbuddy.com [32m200[0m 14.252 ms - 352[0m[39m
+2025-11-04 23:27:15:2715 [32minfo[39m: [32mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan - ::1[39m
+2025-11-04 23:27:15:2715 [32minfo[39m: [32mGenerating meal and workout plan for user: pratishtha@healthbuddy.com[39m
+2025-11-04 23:27:28:2728 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 23:27:28:2728 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [33m404[0m 4.575 ms - 394[0m[39m
+2025-11-04 23:27:32:2732 [32minfo[39m: [32mGET /api/health - ::1[39m
+2025-11-04 23:27:32:2732 [35mhttp[39m: [35m[0mGET /api/health [32m200[0m 2.477 ms - 270[0m[39m
+2025-11-04 23:27:32:2732 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 23:27:32:2732 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [33m404[0m 3.508 ms - 394[0m[39m
+2025-11-04 23:27:41:2741 [32minfo[39m: [32mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan - ::1[39m
+2025-11-04 23:27:41:2741 [32minfo[39m: [32mGenerating meal and workout plan for user: pratishtha@healthbuddy.com[39m
+2025-11-04 23:27:44:2744 [32minfo[39m: [32mGET /api/users/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 23:27:44:2744 [35mhttp[39m: [35m[0mGET /api/users/pratishtha%40healthbuddy.com [36m304[0m 3.749 ms - -[0m[39m
+2025-11-04 23:27:46:2746 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 23:27:46:2746 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [33m404[0m 2.234 ms - 394[0m[39m
+2025-11-04 23:27:48:2748 [32minfo[39m: [32mGET /api/health - ::1[39m
+2025-11-04 23:27:48:2748 [35mhttp[39m: [35m[0mGET /api/health [32m200[0m 1.319 ms - 270[0m[39m
+2025-11-04 23:27:48:2748 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 23:27:48:2748 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [33m404[0m 2.207 ms - 394[0m[39m
+2025-11-04 23:28:42:2842 [31merror[39m: [31mError generating meal and workout plan: [GoogleGenerativeAI Error]: Error fetching from https://generativeai.googleapis.com/v1/models/gemini-1.5-flash:generateContent: [404 Not Found] [39m
+2025-11-04 23:28:42:2842 [32minfo[39m: [32mMeal and workout plan generated for user: pratishtha@healthbuddy.com[39m
+2025-11-04 23:28:42:2842 [35mhttp[39m: [35m[0mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan [32m200[0m 87057.053 ms - -[0m[39m
+2025-11-04 23:28:53:2853 [32minfo[39m: [32mGET /api/health - ::1[39m
+2025-11-04 23:28:53:2853 [35mhttp[39m: [35m[0mGET /api/health [32m200[0m 0.885 ms - 270[0m[39m
+2025-11-04 23:29:14:2914 [31merror[39m: [31mError generating meal and workout plan: [GoogleGenerativeAI Error]: Error fetching from https://generativeai.googleapis.com/v1/models/gemini-1.5-flash:generateContent: [404 Not Found] [39m
+2025-11-04 23:29:14:2914 [32minfo[39m: [32mMeal and workout plan generated for user: pratishtha@healthbuddy.com[39m
+2025-11-04 23:29:14:2914 [35mhttp[39m: [35m[0mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan [32m200[0m 92987.737 ms - -[0m[39m
+2025-11-04 23:29:19:2919 [32minfo[39m: [32mSIGINT received. Shutting down gracefully...[39m
+2025-11-04 23:29:51:2951 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-11-04 23:29:51:2951 [32minfo[39m: [32m🚀 Server running on port 5001[39m
+2025-11-04 23:29:51:2951 [32minfo[39m: [32m📊 Environment: development[39m
+2025-11-04 23:29:51:2951 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
+2025-11-04 23:29:51:2951 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
+2025-11-04 23:29:58:2958 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 23:29:58:2958 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [33m404[0m 12.938 ms - 394[0m[39m
+2025-11-04 23:30:00:300 [32minfo[39m: [32mGET /api/users/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 23:30:00:300 [35mhttp[39m: [35m[0mGET /api/users/pratishtha%40healthbuddy.com [36m304[0m 8.283 ms - -[0m[39m
+2025-11-04 23:30:04:304 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 23:30:04:304 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [33m404[0m 3.031 ms - 394[0m[39m
+2025-11-04 23:30:05:305 [32minfo[39m: [32mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan - ::1[39m
+2025-11-04 23:30:05:305 [32minfo[39m: [32mGenerating meal and workout plan for user: pratishtha@healthbuddy.com[39m
+2025-11-04 23:30:13:3013 [32minfo[39m: [32mGET /api/users/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 23:30:13:3013 [35mhttp[39m: [35m[0mGET /api/users/pratishtha%40healthbuddy.com [36m304[0m 3.135 ms - -[0m[39m
+2025-11-04 23:30:16:3016 [32minfo[39m: [32mPUT /api/users/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 23:30:16:3016 [32minfo[39m: [32mUser profile updated: pratishtha@healthbuddy.com[39m
+2025-11-04 23:30:16:3016 [35mhttp[39m: [35m[0mPUT /api/users/pratishtha%40healthbuddy.com [32m200[0m 13.987 ms - 350[0m[39m
+2025-11-04 23:30:22:3022 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 23:30:22:3022 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [33m404[0m 2.472 ms - 394[0m[39m
+2025-11-04 23:30:37:3037 [32minfo[39m: [32mSIGINT received. Shutting down gracefully...[39m
+2025-11-04 23:30:56:3056 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-11-04 23:30:56:3056 [32minfo[39m: [32m🚀 Server running on port 5001[39m
+2025-11-04 23:30:56:3056 [32minfo[39m: [32m📊 Environment: development[39m
+2025-11-04 23:30:56:3056 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
+2025-11-04 23:30:56:3056 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
+2025-11-04 23:31:02:312 [32minfo[39m: [32mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan - ::1[39m
+2025-11-04 23:31:02:312 [32minfo[39m: [32mGenerating meal and workout plan for user: pratishtha@healthbuddy.com[39m
+2025-11-04 23:31:07:317 [32minfo[39m: [32mGET /api/users/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 23:31:07:317 [35mhttp[39m: [35m[0mGET /api/users/pratishtha%40healthbuddy.com [32m200[0m 7.646 ms - 352[0m[39m
+2025-11-04 23:31:29:3129 [32minfo[39m: [32mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan - ::1[39m
+2025-11-04 23:31:29:3129 [32minfo[39m: [32mGenerating meal and workout plan for user: pratishtha@healthbuddy.com[39m
+2025-11-04 23:31:32:3132 [32minfo[39m: [32mGET /api/users/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 23:31:32:3132 [35mhttp[39m: [35m[0mGET /api/users/pratishtha%40healthbuddy.com [36m304[0m 3.315 ms - -[0m[39m
+2025-11-04 23:31:45:3145 [32minfo[39m: [32mSIGINT received. Shutting down gracefully...[39m
+2025-11-04 23:36:16:3616 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-11-04 23:36:16:3616 [32minfo[39m: [32m🚀 Server running on port 5001[39m
+2025-11-04 23:36:16:3616 [32minfo[39m: [32m📊 Environment: development[39m
+2025-11-04 23:36:16:3616 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
+2025-11-04 23:36:16:3616 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
+2025-11-04 23:36:16:3616 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 23:36:16:3616 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [33m404[0m 5.680 ms - 394[0m[39m
+2025-11-04 23:36:19:3619 [32minfo[39m: [32mGET /api/users/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 23:36:19:3619 [35mhttp[39m: [35m[0mGET /api/users/pratishtha%40healthbuddy.com [36m304[0m 7.753 ms - -[0m[39m
+2025-11-04 23:36:22:3622 [32minfo[39m: [32mPUT /api/users/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 23:36:22:3622 [32minfo[39m: [32mUser profile updated: pratishtha@healthbuddy.com[39m
+2025-11-04 23:36:22:3622 [35mhttp[39m: [35m[0mPUT /api/users/pratishtha%40healthbuddy.com [32m200[0m 14.289 ms - 350[0m[39m
+2025-11-04 23:36:25:3625 [32minfo[39m: [32mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan - ::1[39m
+2025-11-04 23:36:25:3625 [32minfo[39m: [32mGenerating meal and workout plan for user: pratishtha@healthbuddy.com[39m
+2025-11-04 23:38:17:3817 [31merror[39m: [31mError generating meal and workout plan: [GoogleGenerativeAI Error]: Error fetching from https://generativeai.googleapis.com/v1/models/gemini-1.5-flash:generateContent: [404 Not Found] [39m
+2025-11-04 23:38:17:3817 [32minfo[39m: [32mMeal and workout plan generated for user: pratishtha@healthbuddy.com[39m
+2025-11-04 23:38:17:3817 [35mhttp[39m: [35m[0mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan [32m200[0m 111946.742 ms - -[0m[39m
+2025-11-04 23:38:25:3825 [32minfo[39m: [32mSIGINT received. Shutting down gracefully...[39m
+2025-11-04 23:41:48:4148 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-11-04 23:41:48:4148 [32minfo[39m: [32m🚀 Server running on port 5001[39m
+2025-11-04 23:41:48:4148 [32minfo[39m: [32m📊 Environment: development[39m
+2025-11-04 23:41:48:4148 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
+2025-11-04 23:41:48:4148 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
+2025-11-04 23:41:51:4151 [32minfo[39m: [32mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan - ::1[39m
+2025-11-04 23:41:51:4151 [32minfo[39m: [32mGenerating meal and workout plan for user: pratishtha@healthbuddy.com[39m
+2025-11-04 23:42:06:426 [33mwarn[39m: [33mAI generation timed out, using fallback plan[39m
+2025-11-04 23:42:06:426 [32minfo[39m: [32mMeal and workout plan generated for user: pratishtha@healthbuddy.com[39m
+2025-11-04 23:42:06:426 [35mhttp[39m: [35m[0mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan [32m200[0m 15023.742 ms - -[0m[39m
+2025-11-04 23:42:43:4243 [32minfo[39m: [32mGET /api/users/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 23:42:43:4243 [35mhttp[39m: [35m[0mGET /api/users/pratishtha%40healthbuddy.com [32m200[0m 6.063 ms - 352[0m[39m
+2025-11-04 23:42:49:4249 [32minfo[39m: [32mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan - ::1[39m
+2025-11-04 23:42:49:4249 [32minfo[39m: [32mGenerating meal and workout plan for user: pratishtha@healthbuddy.com[39m
+2025-11-04 23:43:04:434 [33mwarn[39m: [33mAI generation timed out, using fallback plan[39m
+2025-11-04 23:43:04:434 [32minfo[39m: [32mMeal and workout plan generated for user: pratishtha@healthbuddy.com[39m
+2025-11-04 23:43:04:434 [35mhttp[39m: [35m[0mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan [32m200[0m 15007.202 ms - -[0m[39m
+2025-11-04 23:43:30:4330 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 23:43:30:4330 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [33m404[0m 5.881 ms - 394[0m[39m
+2025-11-04 23:43:45:4345 [32minfo[39m: [32mSIGINT received. Shutting down gracefully...[39m
+2025-11-04 23:56:52:5652 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-11-04 23:56:52:5652 [32minfo[39m: [32m🚀 Server running on port 5001[39m
+2025-11-04 23:56:52:5652 [32minfo[39m: [32m📊 Environment: development[39m
+2025-11-04 23:56:52:5652 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
+2025-11-04 23:56:52:5652 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
+2025-11-04 23:57:31:5731 [32minfo[39m: [32mGET / - ::1[39m
+2025-11-04 23:57:31:5731 [35mhttp[39m: [35m[0mGET / [33m404[0m 3.971 ms - 421[0m[39m
+2025-11-04 23:58:03:583 [32minfo[39m: [32mGET /api/health - ::1[39m
+2025-11-04 23:58:03:583 [35mhttp[39m: [35m[0mGET /api/health [32m200[0m 1.364 ms - 270[0m[39m
+2025-11-04 23:58:26:5826 [32minfo[39m: [32mSIGINT received. Shutting down gracefully...[39m
+2025-11-04 23:59:37:5937 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-11-04 23:59:37:5937 [32minfo[39m: [32m🚀 Server running on port 5001[39m
+2025-11-04 23:59:37:5937 [32minfo[39m: [32m📊 Environment: development[39m
+2025-11-04 23:59:37:5937 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
+2025-11-04 23:59:37:5937 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
+2025-11-04 23:59:39:5939 [32minfo[39m: [32mGET /api/users/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 23:59:40:5940 [35mhttp[39m: [35m[0mGET /api/users/pratishtha%40healthbuddy.com [36m304[0m 12.008 ms - -[0m[39m
+2025-11-04 23:59:44:5944 [32minfo[39m: [32mPUT /api/users/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-04 23:59:44:5944 [32minfo[39m: [32mUser profile updated: pratishtha@healthbuddy.com[39m
+2025-11-04 23:59:44:5944 [35mhttp[39m: [35m[0mPUT /api/users/pratishtha%40healthbuddy.com [32m200[0m 15.018 ms - 350[0m[39m
+2025-11-04 23:59:46:5946 [32minfo[39m: [32mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan - ::1[39m
+2025-11-04 23:59:46:5946 [32minfo[39m: [32mGenerating AI-powered meal and workout plan for user: pratishtha@healthbuddy.com[39m
+2025-11-04 23:59:46:5946 [32minfo[39m: [32mUser profile: age=25, gender=female, weight=70kg, height=175cm, dietType=balanced, calories=2000[39m
+2025-11-04 23:59:46:5946 [32minfo[39m: [32mCalling AI service to generate meal/workout plan...[39m
+2025-11-05 00:00:01:01 [31merror[39m: [31mAI generation timed out after 15 seconds[39m
+2025-11-05 00:00:01:01 [33mwarn[39m: [33mAI generation timed out, using fallback plan[39m
+2025-11-05 00:00:01:01 [32minfo[39m: [32mMeal and workout plan generated for user: pratishtha@healthbuddy.com (fallback)[39m
+2025-11-05 00:00:01:01 [35mhttp[39m: [35m[0mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan [32m200[0m 15012.011 ms - -[0m[39m
+2025-11-05 00:02:09:29 [32minfo[39m: [32mSIGINT received. Shutting down gracefully...[39m
+2025-11-05 00:05:36:536 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY exists: true[39m
+2025-11-05 00:05:36:536 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY length: 39[39m
+2025-11-05 00:05:36:536 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY starts with: AIzaSyDp5i...[39m
+2025-11-05 00:05:36:536 [32minfo[39m: [32m✅ AI Service initialized successfully with Google Gemini API[39m
+2025-11-05 00:05:36:536 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-11-05 00:05:36:536 [32minfo[39m: [32m🚀 Server running on port 5001[39m
+2025-11-05 00:05:36:536 [32minfo[39m: [32m📊 Environment: development[39m
+2025-11-05 00:05:36:536 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
+2025-11-05 00:05:36:536 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
+2025-11-05 00:06:36:636 [32minfo[39m: [32mGET /api/wellness/status - ::1[39m
+2025-11-05 00:07:00:70 [35mhttp[39m: [35m[0mGET /api/wellness/status [0m-[0m - ms - -[0m[39m
+2025-11-05 00:07:23:723 [32minfo[39m: [32mGET /api/wellness/status - ::1[39m
+2025-11-05 00:08:01:81 [31merror[39m: [31mAI service availability check failed: [GoogleGenerativeAI Error]: Error fetching from https://generativeai.googleapis.com/v1/models/gemini-1.5-flash:generateContent: [404 Not Found] [39m
+2025-11-05 00:08:44:844 [31merror[39m: [31mAI service availability check failed: [GoogleGenerativeAI Error]: Error fetching from https://generativeai.googleapis.com/v1/models/gemini-1.5-flash:generateContent: [404 Not Found] [39m
+2025-11-05 00:08:44:844 [35mhttp[39m: [35m[0mGET /api/wellness/status [32m200[0m 80943.221 ms - 208[0m[39m
+2025-11-05 00:10:39:1039 [32minfo[39m: [32mSIGINT received. Shutting down gracefully...[39m
+2025-11-05 00:11:15:1115 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY exists: true[39m
+2025-11-05 00:11:15:1115 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY length: 39[39m
+2025-11-05 00:11:15:1115 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY starts with: AIzaSyDp5i...[39m
+2025-11-05 00:11:15:1115 [32minfo[39m: [32m✅ AI Service initialized successfully with Google Gemini API[39m
+2025-11-05 00:11:15:1115 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-11-05 00:11:15:1115 [32minfo[39m: [32m🚀 Server running on port 5001[39m
+2025-11-05 00:11:15:1115 [32minfo[39m: [32m📊 Environment: development[39m
+2025-11-05 00:11:15:1115 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
+2025-11-05 00:11:15:1115 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
+2025-11-05 00:11:18:1118 [32minfo[39m: [32mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan - ::1[39m
+2025-11-05 00:11:18:1118 [32minfo[39m: [32mGenerating AI-powered meal and workout plan for user: pratishtha@healthbuddy.com[39m
+2025-11-05 00:11:18:1118 [32minfo[39m: [32mUser profile: age=25, gender=female, weight=70kg, height=175cm, dietType=balanced, calories=2000[39m
+2025-11-05 00:11:18:1118 [32minfo[39m: [32mCalling AI service to generate meal/workout plan...[39m
+2025-11-05 00:11:33:1133 [31merror[39m: [31mAI generation timed out after 15 seconds[39m
+2025-11-05 00:11:33:1133 [33mwarn[39m: [33mAI generation timed out, using fallback plan[39m
+2025-11-05 00:11:33:1133 [32minfo[39m: [32mMeal and workout plan generated for user: pratishtha@healthbuddy.com (fallback)[39m
+2025-11-05 00:11:33:1133 [35mhttp[39m: [35m[0mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan [32m200[0m 15024.665 ms - -[0m[39m
+2025-11-05 00:14:29:1429 [32minfo[39m: [32mSIGTERM received. Shutting down gracefully...[39m
+2025-11-05 00:14:29:1429 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY exists: true[39m
+2025-11-05 00:14:29:1429 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY length: 39[39m
+2025-11-05 00:14:29:1429 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY starts with: AIzaSyDp5i...[39m
+2025-11-05 00:14:29:1429 [32minfo[39m: [32m✅ AI Service initialized successfully with Google Gemini API[39m
+2025-11-05 00:14:30:1430 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-11-05 00:14:30:1430 [32minfo[39m: [32m🚀 Server running on port 5001[39m
+2025-11-05 00:14:30:1430 [32minfo[39m: [32m📊 Environment: development[39m
+2025-11-05 00:14:30:1430 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
+2025-11-05 00:14:30:1430 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
+2025-11-05 00:14:34:1434 [32minfo[39m: [32mSIGTERM received. Shutting down gracefully...[39m
+2025-11-05 00:14:34:1434 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY exists: true[39m
+2025-11-05 00:14:34:1434 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY length: 39[39m
+2025-11-05 00:14:34:1434 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY starts with: AIzaSyDp5i...[39m
+2025-11-05 00:14:34:1434 [32minfo[39m: [32m✅ AI Service initialized successfully with Google Gemini API[39m
+2025-11-05 00:14:34:1434 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-11-05 00:14:34:1434 [32minfo[39m: [32m🚀 Server running on port 5001[39m
+2025-11-05 00:14:34:1434 [32minfo[39m: [32m📊 Environment: development[39m
+2025-11-05 00:14:34:1434 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
+2025-11-05 00:14:34:1434 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
+2025-11-05 00:16:12:1612 [32minfo[39m: [32mSIGTERM received. Shutting down gracefully...[39m
+2025-11-05 00:16:13:1613 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY exists: true[39m
+2025-11-05 00:16:13:1613 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY length: 39[39m
+2025-11-05 00:16:13:1613 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY starts with: AIzaSyDp5i...[39m
+2025-11-05 00:16:13:1613 [32minfo[39m: [32m✅ AI Service initialized successfully with Google Gemini API[39m
+2025-11-05 00:16:13:1613 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-11-05 00:16:13:1613 [32minfo[39m: [32m🚀 Server running on port 5001[39m
+2025-11-05 00:16:13:1613 [32minfo[39m: [32m📊 Environment: development[39m
+2025-11-05 00:16:13:1613 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
+2025-11-05 00:16:13:1613 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
+2025-11-05 00:16:19:1619 [32minfo[39m: [32mSIGINT received. Shutting down gracefully...[39m
+2025-11-05 00:21:28:2128 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY exists: true[39m
+2025-11-05 00:21:28:2128 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY length: 39[39m
+2025-11-05 00:21:28:2128 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY starts with: AIzaSyDp5i...[39m
+2025-11-05 00:21:28:2128 [32minfo[39m: [32mModel initialized with: gemini-2.0-flash[39m
+2025-11-05 00:21:28:2128 [32minfo[39m: [32m✅ AI Service initialized successfully with Google Gemini API[39m
+2025-11-05 00:21:28:2128 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-11-05 00:21:28:2128 [32minfo[39m: [32m🚀 Server running on port 5001[39m
+2025-11-05 00:21:28:2128 [32minfo[39m: [32m📊 Environment: development[39m
+2025-11-05 00:21:28:2128 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
+2025-11-05 00:21:28:2128 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
+2025-11-05 00:21:48:2148 [32minfo[39m: [32mSIGINT received. Shutting down gracefully...[39m
+2025-11-05 00:21:58:2158 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY exists: true[39m
+2025-11-05 00:21:58:2158 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY length: 39[39m
+2025-11-05 00:21:58:2158 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY starts with: AIzaSyDp5i...[39m
+2025-11-05 00:21:58:2158 [32minfo[39m: [32mModel initialized with: gemini-2.0-flash[39m
+2025-11-05 00:21:58:2158 [32minfo[39m: [32m✅ AI Service initialized successfully with Google Gemini API[39m
+2025-11-05 00:21:58:2158 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-11-05 00:21:58:2158 [32minfo[39m: [32m🚀 Server running on port 5001[39m
+2025-11-05 00:21:58:2158 [32minfo[39m: [32m📊 Environment: development[39m
+2025-11-05 00:21:58:2158 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
+2025-11-05 00:21:58:2158 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
+2025-11-05 00:21:58:2158 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-05 00:21:58:2158 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [33m404[0m 12.496 ms - 394[0m[39m
+2025-11-05 00:22:01:221 [32minfo[39m: [32mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan - ::1[39m
+2025-11-05 00:22:01:221 [32minfo[39m: [32mGenerating AI-powered meal and workout plan for user: pratishtha@healthbuddy.com[39m
+2025-11-05 00:22:01:221 [32minfo[39m: [32mUser profile: age=25, gender=female, weight=70kg, height=175cm, dietType=balanced, calories=2000[39m
+2025-11-05 00:22:01:221 [32minfo[39m: [32mCalling AI service to generate meal/workout plan...[39m
+2025-11-05 00:22:01:221 [32minfo[39m: [32mAPI Key configured: true, Model initialized: true[39m
+2025-11-05 00:22:31:2231 [31merror[39m: [31m❌ AI service call failed: AI generation timeout after 30 seconds[39m
+2025-11-05 00:22:31:2231 [31merror[39m: [31m⏱️ AI generation timed out after 15 seconds[39m
+2025-11-05 00:22:31:2231 [31merror[39m: [31m💡 Possible causes:[39m
+2025-11-05 00:22:31:2231 [31merror[39m: [31m   1. Network connectivity issues[39m
+2025-11-05 00:22:31:2231 [31merror[39m: [31m   2. Invalid or expired API key[39m
+2025-11-05 00:22:31:2231 [31merror[39m: [31m   3. API quota exceeded[39m
+2025-11-05 00:22:31:2231 [31merror[39m: [31m   4. Google API service temporarily unavailable[39m
+2025-11-05 00:22:31:2231 [33mwarn[39m: [33mAI generation timed out, using fallback plan[39m
+2025-11-05 00:22:31:2231 [32minfo[39m: [32mMeal and workout plan generated for user: pratishtha@healthbuddy.com (fallback)[39m
+2025-11-05 00:22:31:2231 [35mhttp[39m: [35m[0mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan [32m200[0m 30026.195 ms - -[0m[39m
+2025-11-05 00:37:17:3717 [32minfo[39m: [32mSIGINT received. Shutting down gracefully...[39m
+2025-11-05 00:46:27:4627 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY exists: true[39m
+2025-11-05 00:46:27:4627 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY length: 39[39m
+2025-11-05 00:46:27:4627 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY starts with: AIzaSyDp5i...[39m
+2025-11-05 00:46:27:4627 [32minfo[39m: [32mModel initialized with: gemini-2.0-flash[39m
+2025-11-05 00:46:27:4627 [32minfo[39m: [32m✅ AI Service initialized successfully with Google Gemini API[39m
+2025-11-05 00:46:28:4628 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-11-05 00:46:28:4628 [32minfo[39m: [32m🚀 Server running on port 5001[39m
+2025-11-05 00:46:28:4628 [32minfo[39m: [32m📊 Environment: development[39m
+2025-11-05 00:46:28:4628 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
+2025-11-05 00:46:28:4628 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
+2025-11-05 00:46:36:4636 [32minfo[39m: [32mGET /api/users/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-05 00:46:36:4636 [35mhttp[39m: [35m[0mGET /api/users/pratishtha%40healthbuddy.com [32m200[0m 15.612 ms - 352[0m[39m
+2025-11-05 00:46:48:4648 [32minfo[39m: [32mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan - ::1[39m
+2025-11-05 00:46:48:4648 [32minfo[39m: [32mGenerating AI-powered meal and workout plan for user: pratishtha@healthbuddy.com[39m
+2025-11-05 00:46:48:4648 [32minfo[39m: [32mUser profile: age=25, gender=female, weight=70kg, height=175cm, dietType=balanced, calories=2000[39m
+2025-11-05 00:46:48:4648 [32minfo[39m: [32mCalling AI service to generate meal/workout plan...[39m
+2025-11-05 00:46:48:4648 [32minfo[39m: [32mAPI Key configured: true, Model initialized: true[39m
+2025-11-05 00:47:18:4718 [31merror[39m: [31m❌ AI service call failed: AI generation timeout after 30 seconds[39m
+2025-11-05 00:47:18:4718 [31merror[39m: [31m⏱️ AI generation timed out after 15 seconds[39m
+2025-11-05 00:47:18:4718 [31merror[39m: [31m💡 Possible causes:[39m
+2025-11-05 00:47:18:4718 [31merror[39m: [31m   1. Network connectivity issues[39m
+2025-11-05 00:47:18:4718 [31merror[39m: [31m   2. Invalid or expired API key[39m
+2025-11-05 00:47:18:4718 [31merror[39m: [31m   3. API quota exceeded[39m
+2025-11-05 00:47:18:4718 [31merror[39m: [31m   4. Google API service temporarily unavailable[39m
+2025-11-05 00:47:18:4718 [33mwarn[39m: [33mAI generation timed out, using fallback plan[39m
+2025-11-05 00:47:18:4718 [32minfo[39m: [32mMeal and workout plan generated for user: pratishtha@healthbuddy.com (fallback)[39m
+2025-11-05 00:47:18:4718 [35mhttp[39m: [35m[0mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan [32m200[0m 30020.123 ms - -[0m[39m
+2025-11-05 00:48:47:4847 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-05 00:48:47:4847 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [33m404[0m 5.996 ms - 394[0m[39m
+2025-11-05 00:49:07:497 [32minfo[39m: [32mPUT /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-05 00:49:07:497 [35mhttp[39m: [35m[0mPUT /api/goals/pratishtha%40healthbuddy.com [33m404[0m 6.525 ms - 397[0m[39m
+2025-11-05 00:49:07:497 [32minfo[39m: [32mPOST /api/goals - ::1[39m
+2025-11-05 00:49:07:497 [32minfo[39m: [32mDaily goals created for user: pratishtha@healthbuddy.com[39m
+2025-11-05 00:49:07:497 [35mhttp[39m: [35m[0mPOST /api/goals [32m201[0m 19.725 ms - 442[0m[39m
+2025-11-05 00:49:07:497 [32minfo[39m: [32mPUT /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-05 00:49:07:497 [32minfo[39m: [32mDaily goals updated for user: pratishtha@healthbuddy.com[39m
+2025-11-05 00:49:07:497 [35mhttp[39m: [35m[0mPUT /api/goals/pratishtha%40healthbuddy.com [32m200[0m 4.481 ms - 458[0m[39m
+2025-11-05 00:50:25:5025 [32minfo[39m: [32mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan - ::1[39m
+2025-11-05 00:50:25:5025 [32minfo[39m: [32mGenerating AI-powered meal and workout plan for user: pratishtha@healthbuddy.com[39m
+2025-11-05 00:50:25:5025 [32minfo[39m: [32mUser profile: age=25, gender=female, weight=70kg, height=175cm, dietType=other, calories=2000[39m
+2025-11-05 00:50:25:5025 [32minfo[39m: [32mCalling AI service to generate meal/workout plan...[39m
+2025-11-05 00:50:25:5025 [32minfo[39m: [32mAPI Key configured: true, Model initialized: true[39m
+2025-11-05 00:50:42:5042 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-05 00:50:42:5042 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [32m200[0m 2.198 ms - 460[0m[39m
+2025-11-05 00:50:45:5045 [32minfo[39m: [32mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan - ::1[39m
+2025-11-05 00:50:45:5045 [32minfo[39m: [32mGenerating AI-powered meal and workout plan for user: pratishtha@healthbuddy.com[39m
+2025-11-05 00:50:45:5045 [32minfo[39m: [32mUser profile: age=25, gender=female, weight=70kg, height=175cm, dietType=other, calories=2000[39m
+2025-11-05 00:50:45:5045 [32minfo[39m: [32mCalling AI service to generate meal/workout plan...[39m
+2025-11-05 00:50:45:5045 [32minfo[39m: [32mAPI Key configured: true, Model initialized: true[39m
+2025-11-05 00:50:55:5055 [31merror[39m: [31m❌ AI service call failed: AI generation timeout after 30 seconds[39m
+2025-11-05 00:50:55:5055 [31merror[39m: [31m⏱️ AI generation timed out after 15 seconds[39m
+2025-11-05 00:50:55:5055 [31merror[39m: [31m💡 Possible causes:[39m
+2025-11-05 00:50:55:5055 [31merror[39m: [31m   1. Network connectivity issues[39m
+2025-11-05 00:50:55:5055 [31merror[39m: [31m   2. Invalid or expired API key[39m
+2025-11-05 00:50:55:5055 [31merror[39m: [31m   3. API quota exceeded[39m
+2025-11-05 00:50:55:5055 [31merror[39m: [31m   4. Google API service temporarily unavailable[39m
+2025-11-05 00:50:55:5055 [33mwarn[39m: [33mAI generation timed out, using fallback plan[39m
+2025-11-05 00:50:55:5055 [32minfo[39m: [32mMeal and workout plan generated for user: pratishtha@healthbuddy.com (fallback)[39m
+2025-11-05 00:50:55:5055 [35mhttp[39m: [35m[0mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan [32m200[0m 30010.817 ms - -[0m[39m
+2025-11-05 00:51:15:5115 [31merror[39m: [31m❌ AI service call failed: AI generation timeout after 30 seconds[39m
+2025-11-05 00:51:15:5115 [31merror[39m: [31m⏱️ AI generation timed out after 15 seconds[39m
+2025-11-05 00:51:15:5115 [31merror[39m: [31m💡 Possible causes:[39m
+2025-11-05 00:51:15:5115 [31merror[39m: [31m   1. Network connectivity issues[39m
+2025-11-05 00:51:15:5115 [31merror[39m: [31m   2. Invalid or expired API key[39m
+2025-11-05 00:51:15:5115 [31merror[39m: [31m   3. API quota exceeded[39m
+2025-11-05 00:51:15:5115 [31merror[39m: [31m   4. Google API service temporarily unavailable[39m
+2025-11-05 00:51:15:5115 [33mwarn[39m: [33mAI generation timed out, using fallback plan[39m
+2025-11-05 00:51:15:5115 [32minfo[39m: [32mMeal and workout plan generated for user: pratishtha@healthbuddy.com (fallback)[39m
+2025-11-05 00:51:15:5115 [35mhttp[39m: [35m[0mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan [32m200[0m 30009.283 ms - -[0m[39m
+2025-11-05 00:51:46:5146 [32minfo[39m: [32mGET /api/users/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-05 00:51:46:5146 [35mhttp[39m: [35m[0mGET /api/users/pratishtha%40healthbuddy.com [36m304[0m 2.041 ms - -[0m[39m
+2025-11-05 00:52:18:5218 [32minfo[39m: [32mGET /api/users/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-05 00:52:18:5218 [35mhttp[39m: [35m[0mGET /api/users/pratishtha%40healthbuddy.com [36m304[0m 3.115 ms - -[0m[39m
+2025-11-05 00:53:24:5324 [32minfo[39m: [32mGET /api/users/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-05 00:53:24:5324 [35mhttp[39m: [35m[0mGET /api/users/pratishtha%40healthbuddy.com [36m304[0m 2.847 ms - -[0m[39m
+2025-11-05 00:53:46:5346 [32minfo[39m: [32mSIGINT received. Shutting down gracefully...[39m
+2025-11-05 00:53:49:5349 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY exists: true[39m
+2025-11-05 00:53:49:5349 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY length: 39[39m
+2025-11-05 00:53:49:5349 [32minfo[39m: [32mAI Service initialization - GOOGLE_API_KEY starts with: AIzaSyDp5i...[39m
+2025-11-05 00:53:49:5349 [32minfo[39m: [32mModel initialized with: gemini-2.0-flash[39m
+2025-11-05 00:53:49:5349 [32minfo[39m: [32m✅ AI Service initialized successfully with Google Gemini API[39m
+2025-11-05 00:53:49:5349 [32minfo[39m: [32mSuccessfully connected to MongoDB[39m
+2025-11-05 00:53:49:5349 [32minfo[39m: [32m🚀 Server running on port 5001[39m
+2025-11-05 00:53:49:5349 [32minfo[39m: [32m📊 Environment: development[39m
+2025-11-05 00:53:49:5349 [32minfo[39m: [32m🌐 API URL: http://localhost:5001[39m
+2025-11-05 00:53:49:5349 [32minfo[39m: [32m📖 Health Check: http://localhost:5001/api/health[39m
+2025-11-05 00:54:08:548 [32minfo[39m: [32mGET /api/users/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-05 00:54:08:548 [35mhttp[39m: [35m[0mGET /api/users/pratishtha%40healthbuddy.com [36m304[0m 16.105 ms - -[0m[39m
+2025-11-05 00:55:59:5559 [32minfo[39m: [32mGET /api/users/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-05 00:55:59:5559 [35mhttp[39m: [35m[0mGET /api/users/pratishtha%40healthbuddy.com [36m304[0m 4.208 ms - -[0m[39m
+2025-11-05 00:56:23:5623 [32minfo[39m: [32mGET /api/users/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-05 00:56:23:5623 [35mhttp[39m: [35m[0mGET /api/users/pratishtha%40healthbuddy.com [36m304[0m 3.177 ms - -[0m[39m
+2025-11-05 00:56:27:5627 [32minfo[39m: [32mPUT /api/users/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-05 00:56:27:5627 [32minfo[39m: [32mUser profile updated: pratishtha@healthbuddy.com[39m
+2025-11-05 00:56:27:5627 [35mhttp[39m: [35m[0mPUT /api/users/pratishtha%40healthbuddy.com [32m200[0m 13.870 ms - 350[0m[39m
+2025-11-05 00:56:29:5629 [32minfo[39m: [32mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan - ::1[39m
+2025-11-05 00:56:29:5629 [32minfo[39m: [32mGenerating AI-powered meal and workout plan for user: pratishtha@healthbuddy.com[39m
+2025-11-05 00:56:29:5629 [32minfo[39m: [32mUser profile: age=25, gender=female, weight=70kg, height=175cm, dietType=other, calories=2000[39m
+2025-11-05 00:56:29:5629 [32minfo[39m: [32mCalling AI service to generate meal/workout plan...[39m
+2025-11-05 00:56:29:5629 [32minfo[39m: [32mAPI Key configured: true, Model initialized: true[39m
+2025-11-05 00:56:59:5659 [31merror[39m: [31m❌ AI service call failed: AI generation timeout after 30 seconds[39m
+2025-11-05 00:56:59:5659 [31merror[39m: [31m⏱️ AI generation timed out after 15 seconds[39m
+2025-11-05 00:56:59:5659 [31merror[39m: [31m💡 Possible causes:[39m
+2025-11-05 00:56:59:5659 [31merror[39m: [31m   1. Network connectivity issues[39m
+2025-11-05 00:56:59:5659 [31merror[39m: [31m   2. Invalid or expired API key[39m
+2025-11-05 00:56:59:5659 [31merror[39m: [31m   3. API quota exceeded[39m
+2025-11-05 00:56:59:5659 [31merror[39m: [31m   4. Google API service temporarily unavailable[39m
+2025-11-05 00:56:59:5659 [33mwarn[39m: [33mAI generation timed out, using fallback plan[39m
+2025-11-05 00:56:59:5659 [32minfo[39m: [32mMeal and workout plan generated for user: pratishtha@healthbuddy.com (fallback)[39m
+2025-11-05 00:56:59:5659 [35mhttp[39m: [35m[0mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan [32m200[0m 30024.940 ms - -[0m[39m
+2025-11-05 00:57:00:570 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-05 00:57:00:570 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [36m304[0m 3.861 ms - -[0m[39m
+2025-11-05 00:57:04:574 [32minfo[39m: [32mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan - ::1[39m
+2025-11-05 00:57:04:574 [32minfo[39m: [32mGenerating AI-powered meal and workout plan for user: pratishtha@healthbuddy.com[39m
+2025-11-05 00:57:04:574 [32minfo[39m: [32mUser profile: age=25, gender=female, weight=70kg, height=175cm, dietType=other, calories=2000[39m
+2025-11-05 00:57:04:574 [32minfo[39m: [32mCalling AI service to generate meal/workout plan...[39m
+2025-11-05 00:57:04:574 [32minfo[39m: [32mAPI Key configured: true, Model initialized: true[39m
+2025-11-05 00:57:22:5722 [32minfo[39m: [32mGET /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-05 00:57:22:5722 [35mhttp[39m: [35m[0mGET /api/goals/pratishtha%40healthbuddy.com [36m304[0m 2.537 ms - -[0m[39m
+2025-11-05 00:57:34:5734 [32minfo[39m: [32mPUT /api/goals/pratishtha%40healthbuddy.com - ::1[39m
+2025-11-05 00:57:34:5734 [32minfo[39m: [32mDaily goals updated for user: pratishtha@healthbuddy.com[39m
+2025-11-05 00:57:34:5734 [35mhttp[39m: [35m[0mPUT /api/goals/pratishtha%40healthbuddy.com [32m200[0m 8.761 ms - 458[0m[39m
+2025-11-05 00:57:34:5734 [31merror[39m: [31m❌ AI service call failed: AI generation timeout after 30 seconds[39m
+2025-11-05 00:57:34:5734 [31merror[39m: [31m⏱️ AI generation timed out after 15 seconds[39m
+2025-11-05 00:57:34:5734 [31merror[39m: [31m💡 Possible causes:[39m
+2025-11-05 00:57:34:5734 [31merror[39m: [31m   1. Network connectivity issues[39m
+2025-11-05 00:57:34:5734 [31merror[39m: [31m   2. Invalid or expired API key[39m
+2025-11-05 00:57:34:5734 [31merror[39m: [31m   3. API quota exceeded[39m
+2025-11-05 00:57:34:5734 [31merror[39m: [31m   4. Google API service temporarily unavailable[39m
+2025-11-05 00:57:34:5734 [33mwarn[39m: [33mAI generation timed out, using fallback plan[39m
+2025-11-05 00:57:34:5734 [32minfo[39m: [32mMeal and workout plan generated for user: pratishtha@healthbuddy.com (fallback)[39m
+2025-11-05 00:57:34:5734 [35mhttp[39m: [35m[0mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan [32m200[0m 30008.710 ms - -[0m[39m
+2025-11-05 00:58:54:5854 [32minfo[39m: [32mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan - ::1[39m
+2025-11-05 00:58:54:5854 [32minfo[39m: [32mGenerating AI-powered meal and workout plan for user: pratishtha@healthbuddy.com[39m
+2025-11-05 00:58:54:5854 [32minfo[39m: [32mUser profile: age=25, gender=female, weight=70kg, height=175cm, dietType=other, calories=2000[39m
+2025-11-05 00:58:54:5854 [32minfo[39m: [32mCalling AI service to generate meal/workout plan...[39m
+2025-11-05 00:58:54:5854 [32minfo[39m: [32mAPI Key configured: true, Model initialized: true[39m
+2025-11-05 00:59:24:5924 [31merror[39m: [31m❌ AI service call failed: AI generation timeout after 30 seconds[39m
+2025-11-05 00:59:24:5924 [31merror[39m: [31m⏱️ AI generation timed out after 15 seconds[39m
+2025-11-05 00:59:24:5924 [31merror[39m: [31m💡 Possible causes:[39m
+2025-11-05 00:59:24:5924 [31merror[39m: [31m   1. Network connectivity issues[39m
+2025-11-05 00:59:24:5924 [31merror[39m: [31m   2. Invalid or expired API key[39m
+2025-11-05 00:59:24:5924 [31merror[39m: [31m   3. API quota exceeded[39m
+2025-11-05 00:59:24:5924 [31merror[39m: [31m   4. Google API service temporarily unavailable[39m
+2025-11-05 00:59:24:5924 [33mwarn[39m: [33mAI generation timed out, using fallback plan[39m
+2025-11-05 00:59:24:5924 [32minfo[39m: [32mMeal and workout plan generated for user: pratishtha@healthbuddy.com (fallback)[39m
+2025-11-05 00:59:24:5924 [35mhttp[39m: [35m[0mGET /api/wellness/pratishtha%40healthbuddy.com/meal-workout-plan [32m200[0m 30010.671 ms - -[0m[39m
+2025-11-05 00:59:56:5956 [32minfo[39m: [32mSIGINT received. Shutting down gracefully...[39m

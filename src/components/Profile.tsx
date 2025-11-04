@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import { User, Target, Moon, Palette, Bell } from 'lucide-react';
+import { User, Target, Moon, Palette, Bell, LogOut } from 'lucide-react';
 import { Card } from './ui/card';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -10,17 +10,39 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { Avatar, AvatarFallback } from './ui/avatar';
 import { toast } from 'sonner';
 
-export function Profile() {
+interface ProfileProps {
+  userName: string;
+  onLogout?: () => void;
+}
+
+export function Profile({ userName, onLogout }: ProfileProps) {
   const [darkMode, setDarkMode] = useState(true);
   const [notifications, setNotifications] = useState(true);
-  const [name, setName] = useState('Lucky');
-  const [email, setEmail] = useState('lucky@healthbuddy.com');
+  const [name, setName] = useState(userName || '');
+  const [email, setEmail] = useState(() => {
+    // Generate email from name or use stored email
+    const storedEmail = localStorage.getItem('userEmail');
+    if (storedEmail) return storedEmail;
+    // Generate a default email from name if no stored email
+    const emailName = (userName || '').toLowerCase().replace(/\s+/g, '');
+    return emailName ? `${emailName}@healthbuddy.com` : 'user@healthbuddy.com';
+  });
   const [age, setAge] = useState('25');
   const [weight, setWeight] = useState('70');
   const [height, setHeight] = useState('175');
   const [gender, setGender] = useState('male');
+  const [dietType, setDietType] = useState('balanced');
+  const [dailyCalorieTarget, setDailyCalorieTarget] = useState('2000');
   const [isSaving, setIsSaving] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  // Update name when userName prop changes (only if different)
+  useEffect(() => {
+    if (userName && userName !== name) {
+      setName(userName);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userName]);
 
   // Load existing profile by email
   useEffect(() => {
@@ -33,11 +55,13 @@ export function Profile() {
           const json = await res.json();
           const data = json?.data;
           if (data) {
-            setName(data.name ?? '');
+            setName((data.name ?? userName) || '');
             setAge(String(data.age ?? ''));
             setGender(data.gender ?? 'male');
             setWeight(String(data.weight ?? ''));
             setHeight(String(data.height ?? ''));
+            setDietType(data.dietType ?? 'balanced');
+            setDailyCalorieTarget(String(data.dailyCalorieTarget ?? '2000'));
             toast.success('Loaded profile');
           }
         }
@@ -48,7 +72,7 @@ export function Profile() {
       }
     };
     loadProfile();
-  }, [email]);
+  }, [email, userName]);
 
   const onSave = async () => {
     if (!email) {
@@ -63,6 +87,8 @@ export function Profile() {
       gender,
       weight: Number(weight) || 0,
       height: Number(height) || 0,
+      dietType,
+      dailyCalorieTarget: Number(dailyCalorieTarget) || 2000,
     };
     try {
       // Try update first
@@ -221,15 +247,19 @@ export function Profile() {
               </div>
               <div>
                 <Label className="text-white/80 mb-2 block">Diet Type</Label>
-                <Select defaultValue="balanced">
+                <Select value={dietType} onValueChange={setDietType}>
                   <SelectTrigger className="bg-white/10 border-white/20 text-white">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="balanced">Balanced</SelectItem>
-                    <SelectItem value="keto">Keto</SelectItem>
+                    <SelectItem value="vegetarian">Vegetarian</SelectItem>
                     <SelectItem value="vegan">Vegan</SelectItem>
+                    <SelectItem value="keto">Keto</SelectItem>
                     <SelectItem value="paleo">Paleo</SelectItem>
+                    <SelectItem value="mediterranean">Mediterranean</SelectItem>
+                    <SelectItem value="omnivore">Omnivore</SelectItem>
+                    <SelectItem value="other">Other</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -237,7 +267,8 @@ export function Profile() {
                 <Label className="text-white/80 mb-2 block">Daily Calorie Target</Label>
                 <Input
                   type="number"
-                  defaultValue="2000"
+                  value={dailyCalorieTarget}
+                  onChange={(e) => setDailyCalorieTarget(e.target.value)}
                   className="bg-white/10 border-white/20 text-white"
                 />
               </div>
@@ -297,14 +328,24 @@ export function Profile() {
           </Card>
         </motion.div>
 
-        {/* Save Button */}
+        {/* Save Button and Logout */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="flex justify-end"
+          className="flex justify-between items-center"
         >
-          <Button onClick={onSave} disabled={isSaving || isLoading} className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white px-8">
+          {onLogout && (
+            <Button 
+              onClick={onLogout} 
+              variant="outline"
+              className="border-red-500/50 text-red-400 hover:bg-red-500/10 hover:text-red-300 px-6"
+            >
+              <LogOut size={16} className="mr-2" />
+              Logout
+            </Button>
+          )}
+          <Button onClick={onSave} disabled={isSaving || isLoading} className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white px-8 ml-auto">
             {isSaving ? 'Saving...' : 'Save Changes'}
           </Button>
         </motion.div>

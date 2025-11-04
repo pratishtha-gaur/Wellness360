@@ -24,6 +24,12 @@ router.get(
   WellnessController.getWellnessInsights
 );
 
+// Get personalized meal and workout plan
+router.get(
+  '/:email/meal-workout-plan',
+  WellnessController.getMealWorkoutPlan
+);
+
 // Check AI service status
 router.get(
   '/status',

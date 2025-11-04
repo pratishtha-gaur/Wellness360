@@ -56,6 +56,20 @@ const userProfileSchema = new Schema<IUserProfileDocument>({
     required: [true, 'Height is required'],
     min: [100, 'Height must be at least 100 cm'],
     max: [250, 'Height cannot exceed 250 cm']
+  },
+  dietType: {
+    type: String,
+    enum: {
+      values: ['vegetarian', 'vegan', 'omnivore', 'keto', 'paleo', 'mediterranean', 'balanced', 'other'],
+      message: 'Diet type must be one of: vegetarian, vegan, omnivore, keto, paleo, mediterranean, balanced, other'
+    },
+    default: 'balanced'
+  },
+  dailyCalorieTarget: {
+    type: Number,
+    min: [800, 'Daily calorie target must be at least 800 calories'],
+    max: [5000, 'Daily calorie target cannot exceed 5000 calories'],
+    default: 2000
   }
 }, {
   timestamps: true, // Automatically adds createdAt and updatedAt

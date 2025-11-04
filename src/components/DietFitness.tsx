@@ -1,39 +1,183 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Apple, Dumbbell, Home, Building2, Flame } from 'lucide-react';
+import { Apple, Dumbbell, Home, Building2, Flame, RefreshCw } from 'lucide-react';
 import { Card } from './ui/card';
 import { Button } from './ui/button';
 import { ProgressRing } from './ProgressRing';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
+import { toast } from 'sonner';
+
+interface Meal {
+  time: string;
+  name: string;
+  calories: number;
+  protein: number;
+  carbs?: number;
+  fats?: number;
+}
+
+interface Workout {
+  name: string;
+  sets: number;
+  reps: number | string;
+  icon: string;
+  description?: string;
+}
+
+interface Macros {
+  protein: number;
+  carbs: number;
+  fats: number;
+  proteinPercent: number;
+  carbsPercent: number;
+  fatsPercent: number;
+}
 
 export function DietFitness() {
   const [location, setLocation] = useState<'home' | 'gym'>('home');
+  const [meals, setMeals] = useState<Meal[]>([]);
+  const [homeWorkouts, setHomeWorkouts] = useState<Workout[]>([]);
+  const [gymWorkouts, setGymWorkouts] = useState<Workout[]>([]);
+  const [macros, setMacros] = useState<Macros>({
+    protein: 110,
+    carbs: 180,
+    fats: 55,
+    proteinPercent: 40,
+    carbsPercent: 35,
+    fatsPercent: 25,
+  });
+  const [targetCalories, setTargetCalories] = useState(2000);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const meals = [
-    { time: 'Breakfast', name: 'Oatmeal with berries & almonds', calories: 350, protein: 12 },
-    { time: 'Snack', name: 'Greek yogurt with honey', calories: 180, protein: 15 },
-    { time: 'Lunch', name: 'Grilled chicken salad', calories: 450, protein: 35 },
-    { time: 'Snack', name: 'Apple & peanut butter', calories: 200, protein: 8 },
-    { time: 'Dinner', name: 'Salmon with quinoa & veggies', calories: 520, protein: 40 },
-  ];
+  // Get user email from localStorage
+  const getUserEmail = (): string | null => {
+    try {
+      return localStorage.getItem('userEmail');
+    } catch {
+      return null;
+    }
+  };
 
-  const homeWorkouts = [
-    { name: 'Push-ups', sets: 3, reps: 15, icon: '💪' },
-    { name: 'Squats', sets: 3, reps: 20, icon: '🦵' },
-    { name: 'Plank', sets: 3, reps: '60s', icon: '🧘' },
-    { name: 'Jumping Jacks', sets: 3, reps: 30, icon: '🏃' },
-  ];
+  // Fetch meal and workout plan from backend
+  const fetchMealWorkoutPlan = async () => {
+    const email = getUserEmail();
+    if (!email) {
+      // Fallback to default data if no email
+      console.log('No user email found, using default data');
+      setDefaultData();
+      setIsLoading(false);
+      return;
+    }
 
-  const gymWorkouts = [
-    { name: 'Bench Press', sets: 4, reps: 10, icon: '🏋️' },
-    { name: 'Deadlifts', sets: 4, reps: 8, icon: '💪' },
-    { name: 'Lat Pulldown', sets: 3, reps: 12, icon: '🔥' },
-    { name: 'Leg Press', sets: 4, reps: 12, icon: '🦵' },
-  ];
+    setIsLoading(true);
+    try {
+      const url = `/api/wellness/${encodeURIComponent(email)}/meal-workout-plan`;
+      console.log('Fetching meal/workout plan from:', url);
+      
+      // Add timeout to prevent hanging (backend has 15s timeout, so we use 20s here)
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 20000); // 20 second timeout
+      
+      const res = await fetch(url, {
+        signal: controller.signal
+      });
+      
+      clearTimeout(timeoutId);
+      
+      if (res.ok) {
+        const json = await res.json();
+        console.log('API response:', json);
+        const data = json?.data;
+        if (data && data.meals && data.meals.length > 0) {
+          setMeals(data.meals || []);
+          setHomeWorkouts(data.homeWorkouts || []);
+          setGymWorkouts(data.gymWorkouts || []);
+          if (data.macros) {
+            setMacros(data.macros);
+          }
+          // Calculate target calories from meals
+          const totalCals = data.meals?.reduce((sum: number, meal: Meal) => sum + meal.calories, 0) || 2000;
+          setTargetCalories(totalCals);
+          
+          // Check if it's AI-generated or fallback (simple heuristic)
+          const isAIGenerated = !data.meals.some((meal: Meal) => 
+            meal.name === 'Oatmeal with berries & almonds' || 
+            meal.name === 'Greek yogurt with honey'
+          );
+          
+          if (isAIGenerated) {
+            toast.success('Loaded AI-generated personalized meal and workout plan! 🎉');
+          } else {
+            toast.success('Loaded meal and workout plan (using defaults - AI not configured)');
+          }
+        } else {
+          console.warn('API returned empty or invalid data, using defaults');
+          setDefaultData();
+        }
+      } else {
+        // Get error details
+        let errorText: string;
+        try {
+          errorText = await res.text();
+        } catch {
+          errorText = `HTTP ${res.status}: ${res.statusText}`;
+        }
+        let errorMessage = 'Failed to load personalized plan';
+        try {
+          const errorJson = JSON.parse(errorText);
+          errorMessage = errorJson.message || errorJson.error || errorMessage;
+        } catch {
+          errorMessage = errorText || `HTTP ${res.status}: ${res.statusText}`;
+        }
+        console.error('API error:', res.status, errorMessage);
+        setDefaultData();
+        toast.error('Using default recommendations. ' + errorMessage);
+      }
+    } catch (error: any) {
+      console.error('Error fetching meal/workout plan:', error);
+      if (error.name === 'AbortError') {
+        console.error('Request timed out');
+        toast.error('Request timed out. Using default recommendations.');
+      } else {
+        toast.error('Failed to load personalized plan. Using default recommendations.');
+      }
+      setDefaultData();
+    } finally {
+      // Always set loading to false, even if there's an error
+      setIsLoading(false);
+    }
+  };
+
+  // Set default data as fallback
+  const setDefaultData = () => {
+    setMeals([
+      { time: 'Breakfast', name: 'Oatmeal with berries & almonds', calories: 350, protein: 12 },
+      { time: 'Snack', name: 'Greek yogurt with honey', calories: 180, protein: 15 },
+      { time: 'Lunch', name: 'Grilled chicken salad', calories: 450, protein: 35 },
+      { time: 'Snack', name: 'Apple & peanut butter', calories: 200, protein: 8 },
+      { time: 'Dinner', name: 'Salmon with quinoa & veggies', calories: 520, protein: 40 },
+    ]);
+    setHomeWorkouts([
+      { name: 'Push-ups', sets: 3, reps: 15, icon: '💪' },
+      { name: 'Squats', sets: 3, reps: 20, icon: '🦵' },
+      { name: 'Plank', sets: 3, reps: '60s', icon: '🧘' },
+      { name: 'Jumping Jacks', sets: 3, reps: 30, icon: '🏃' },
+    ]);
+    setGymWorkouts([
+      { name: 'Bench Press', sets: 4, reps: 10, icon: '🏋️' },
+      { name: 'Deadlifts', sets: 4, reps: 8, icon: '💪' },
+      { name: 'Lat Pulldown', sets: 3, reps: 12, icon: '🔥' },
+      { name: 'Leg Press', sets: 4, reps: 12, icon: '🦵' },
+    ]);
+    setTargetCalories(2000);
+  };
+
+  useEffect(() => {
+    fetchMealWorkoutPlan();
+  }, []);
 
   const workouts = location === 'home' ? homeWorkouts : gymWorkouts;
   const totalCalories = meals.reduce((sum, meal) => sum + meal.calories, 0);
-  const targetCalories = 2000;
   const calorieProgress = Math.round((totalCalories / targetCalories) * 100);
 
   return (
@@ -90,20 +234,20 @@ export function DietFitness() {
                 <div className="bg-emerald-500/20 rounded-xl p-4 flex flex-col items-center justify-center border border-emerald-400/30">
                   <div className="text-3xl mb-2">🍗</div>
                   <p className="text-white/60 text-sm mb-1">Protein</p>
-                  <p className="text-white text-2xl">110g</p>
-                  <p className="text-emerald-400 text-sm">40%</p>
+                  <p className="text-white text-2xl">{macros.protein}g</p>
+                  <p className="text-emerald-400 text-sm">{macros.proteinPercent}%</p>
                 </div>
                 <div className="bg-blue-500/20 rounded-xl p-4 flex flex-col items-center justify-center border border-blue-400/30">
                   <div className="text-3xl mb-2">🍞</div>
                   <p className="text-white/60 text-sm mb-1">Carbs</p>
-                  <p className="text-white text-2xl">180g</p>
-                  <p className="text-blue-400 text-sm">35%</p>
+                  <p className="text-white text-2xl">{macros.carbs}g</p>
+                  <p className="text-blue-400 text-sm">{macros.carbsPercent}%</p>
                 </div>
                 <div className="bg-amber-500/20 rounded-xl p-4 flex flex-col items-center justify-center border border-amber-400/30">
                   <div className="text-3xl mb-2">🥑</div>
                   <p className="text-white/60 text-sm mb-1">Fats</p>
-                  <p className="text-white text-2xl">55g</p>
-                  <p className="text-amber-400 text-sm">25%</p>
+                  <p className="text-white text-2xl">{macros.fats}g</p>
+                  <p className="text-amber-400 text-sm">{macros.fatsPercent}%</p>
                 </div>
               </div>
             </Card>
@@ -117,12 +261,43 @@ export function DietFitness() {
           transition={{ delay: 0.3 }}
         >
           <Card className="p-6 bg-white/5 border-white/10 backdrop-blur-sm">
-            <div className="flex items-center gap-3 mb-4">
-              <Apple className="text-red-400" size={24} />
-              <h3 className="text-white">Today's Meal Plan</h3>
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-3">
+                <Apple className="text-red-400" size={24} />
+                <h3 className="text-white">Today's Meal Plan</h3>
+              </div>
+              <Button
+                onClick={fetchMealWorkoutPlan}
+                disabled={isLoading}
+                size="sm"
+                variant="outline"
+                className="border-white/20 text-white hover:bg-white/10"
+              >
+                <RefreshCw size={16} className={`mr-2 ${isLoading ? 'animate-spin' : ''}`} />
+                Refresh
+              </Button>
             </div>
-            <div className="space-y-3">
-              {meals.map((meal, index) => (
+            {isLoading ? (
+              <div className="text-center py-8 text-white/60">
+                <RefreshCw size={24} className="animate-spin mx-auto mb-2 text-emerald-400" />
+                <p>Loading personalized meal plan...</p>
+              </div>
+            ) : meals.length === 0 ? (
+              <div className="text-center py-8 text-white/60">
+                <p>No meal plan available. Please save your profile first.</p>
+                <Button
+                  onClick={fetchMealWorkoutPlan}
+                  size="sm"
+                  variant="outline"
+                  className="mt-4 border-white/20 text-white hover:bg-white/10"
+                >
+                  <RefreshCw size={16} className="mr-2" />
+                  Try Again
+                </Button>
+              </div>
+            ) : (
+              <div className="space-y-3">
+                {meals.map((meal, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
@@ -139,8 +314,9 @@ export function DietFitness() {
                     <p className="text-white/60 text-sm">{meal.protein}g protein</p>
                   </div>
                 </motion.div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </Card>
         </motion.div>
 
@@ -176,8 +352,18 @@ export function DietFitness() {
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-4">
-              {workouts.map((workout, index) => (
+            {isLoading ? (
+              <div className="text-center py-8 text-white/60">
+                <RefreshCw size={24} className="animate-spin mx-auto mb-2 text-emerald-400" />
+                <p>Loading workout recommendations...</p>
+              </div>
+            ) : workouts.length === 0 ? (
+              <div className="text-center py-8 text-white/60">
+                <p>No workout recommendations available.</p>
+              </div>
+            ) : (
+              <div className="grid md:grid-cols-2 gap-4">
+                {workouts.map((workout, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -193,8 +379,9 @@ export function DietFitness() {
                     </p>
                   </div>
                 </motion.div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </Card>
         </motion.div>
       </div>

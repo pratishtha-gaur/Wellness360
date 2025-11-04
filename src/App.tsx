@@ -35,7 +35,41 @@ export default function App() {
 
   const handleOnboardingComplete = (name: string) => {
     setUserName(name);
+    // Store the name in localStorage for persistence
+    try {
+      localStorage.setItem('userName', name);
+      // Also set a session flag to indicate user is logged in
+      localStorage.setItem('isLoggedIn', 'true');
+    } catch (e) {
+      // Ignore localStorage errors
+    }
   };
+
+  const handleLogout = () => {
+    setUserName(null);
+    try {
+      localStorage.removeItem('userName');
+      localStorage.removeItem('userEmail');
+      localStorage.removeItem('isLoggedIn');
+      toast.success('Logged out successfully');
+    } catch (e) {
+      // Ignore localStorage errors
+    }
+  };
+
+  // Load userName from localStorage on mount only if logged in
+  useEffect(() => {
+    try {
+      const isLoggedIn = localStorage.getItem('isLoggedIn');
+      const storedName = localStorage.getItem('userName');
+      // Only auto-login if both isLoggedIn flag and userName exist
+      if (isLoggedIn === 'true' && storedName) {
+        setUserName(storedName);
+      }
+    } catch (e) {
+      // Ignore localStorage errors
+    }
+  }, []);
 
   if (!userName) {
     return (
@@ -96,7 +130,7 @@ export default function App() {
         )}
         {currentPage === "diet" && <DietFitness />}
         {currentPage === "analytics" && <Analytics />}
-        {currentPage === "profile" && <Profile />}
+        {currentPage === "profile" && <Profile userName={userName} onLogout={handleLogout} />}
       </div>
 
       <Toaster />
