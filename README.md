@@ -1,11 +1,9 @@
 
-  # Health Buddy Web App Design
-
-  This is a code bundle for Health Buddy Web App Design. The original project is available at https://www.figma.com/design/C1VY6ijfpr3ArsSsfIBxWs/Health-Buddy-Web-App-Design.
+  # Wellness360
 
   ## Running the code
 
   Run `npm i` to install the dependencies.
 
-  Run `npm run dev` to start the development server.
+  Run `npm run dev:full` to start the development server.
   
