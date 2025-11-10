@@ -21,13 +21,14 @@ export default function App() {
         const res = await fetch("/api/health");
         if (!res.ok) throw new Error("Health check failed");
         const data = await res.json();
-        if (data?.status === "ok") {
-          toast.success("Connected to backend API");
-        } else {
-          toast.message("Backend responded", { description: JSON.stringify(data) });
+        if (data?.data?.status === "healthy" || data?.status === "ok") {
+          // Only show success, don't show errors
+          console.log("✅ Backend API is connected");
         }
       } catch (e) {
-        toast.error("Backend API is not reachable");
+        // Silently fail - don't show error toast
+        // Backend might not be running in development, which is okay
+        console.warn("⚠️ Backend API health check failed (this is okay if backend is not running)");
       }
     };
     checkHealth();
@@ -51,6 +52,9 @@ export default function App() {
       localStorage.removeItem('userName');
       localStorage.removeItem('userEmail');
       localStorage.removeItem('isLoggedIn');
+      // Clear meal plan cache on logout
+      localStorage.removeItem('mealWorkoutPlan');
+      localStorage.removeItem('mealWorkoutPlanDate');
       toast.success('Logged out successfully');
     } catch (e) {
       // Ignore localStorage errors

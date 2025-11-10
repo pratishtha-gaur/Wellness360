@@ -227,11 +227,15 @@ export class WellnessController {
          mealWorkoutPlan.meals[0].name !== 'Oatmeal with berries & almonds'); // Simple check for AI vs fallback
       
       logger.info(`Meal and workout plan generated for user: ${email} (${usedAI ? 'AI-generated' : 'fallback'})`);
+      logger.info(`Plan details: generatedAt=${mealWorkoutPlan.generatedAt}, meals count=${mealWorkoutPlan.meals.length}, first meal=${mealWorkoutPlan.meals[0]?.name || 'N/A'}, isAIGenerated=${usedAI}`);
 
       res.json({
         success: true,
         message: 'Meal and workout plan generated successfully',
-        data: mealWorkoutPlan
+        data: {
+          ...mealWorkoutPlan,
+          isAIGenerated: usedAI
+        }
       });
     } catch (error) {
       logger.error('Error generating meal/workout plan:', error);

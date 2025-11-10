@@ -19,14 +19,15 @@ export class AIService {
     if (apiKey && apiKey.trim().length > 0) {
       try {
         // Initialize Google Gemini model
-        // LangChain uses different model identifiers - try without version prefix
+        // Try different model names - LangChain might need specific format
+        // gemini-pro is the most compatible with older LangChain versions
         this.model = new ChatGoogleGenerativeAI({
           apiKey: apiKey.trim(),
-          modelName: 'gemini-2.0-flash', // Direct model name
+          modelName: 'gemini-pro', // Most compatible model name
           temperature: 0.7,
           maxOutputTokens: 2048,
         });
-        logger.info(`Model initialized with: gemini-2.0-flash`);
+        logger.info(`Model initialized with: gemini-pro`);
         this.initialized = true;
         logger.info('✅ AI Service initialized successfully with Google Gemini API');
       } catch (error) {
@@ -262,14 +263,15 @@ Focus on creating a plan that is:
 
       // Check API key at runtime in case it was added after server start
       const apiKey = process.env.GOOGLE_API_KEY;
-      if (!this.initialized || !this.model || !apiKey || apiKey.trim().length === 0) {
-        // Return fallback plan if AI is not available
-        logger.warn(`AI service not initialized. Initialized: ${this.initialized}, Model exists: ${!!this.model}, API Key exists: ${!!apiKey}`);
+      if (!apiKey || apiKey.trim().length === 0) {
+        logger.warn('⚠️ GOOGLE_API_KEY is missing or empty in environment variables');
         logger.info(`Using fallback meal/workout plan for user: ${userProfile.email}`);
-        if (!apiKey || apiKey.trim().length === 0) {
-          logger.warn('⚠️ GOOGLE_API_KEY is missing or empty in environment variables');
-        }
         return this.getFallbackMealWorkoutPlan(targetCalories, userDietType);
+      }
+
+      // Even if model isn't initialized, we can still try direct API call
+      if (!this.initialized || !this.model) {
+        logger.warn(`AI model not initialized, will use direct API call. Initialized: ${this.initialized}, Model exists: ${!!this.model}`);
       }
 
       logger.info(`Generating AI-powered meal and workout plan for user: ${userProfile.email}`);
@@ -279,7 +281,11 @@ Focus on creating a plan that is:
       const heightInMeters = userProfile.height / 100;
       const bmi = Math.round((userProfile.weight / (heightInMeters * heightInMeters)) * 100) / 100;
 
-      // Create meal and workout prompt template
+      // Create meal and workout prompt template with variation instruction
+      // Add timestamp to encourage different responses each time
+      const timestamp = new Date().toISOString();
+      const variationNote = `IMPORTANT: Generate a DIFFERENT and VARIED meal plan than previous requests. Use diverse ingredients, cuisines, and meal combinations. Vary the workouts with different exercises and rep ranges. Request timestamp: ${timestamp}`;
+      
       const mealWorkoutPrompt = new PromptTemplate({
         template: `You are a professional nutritionist and fitness trainer. Create a personalized daily meal plan and workout routines for the following user:
 
@@ -292,14 +298,18 @@ Focus on creating a plan that is:
 - Diet Type: {dietType}
 - Daily Calorie Target: {dailyCalorieTarget} calories
 
+**IMPORTANT - VARIETY REQUIREMENT:**
+{variationNote}
+
 **Requirements:**
 1. Create 5 meals: Breakfast, Snack, Lunch, Snack, Dinner
 2. Total calories should be approximately {dailyCalorieTarget} calories
 3. Meals must be appropriate for {dietType} diet
 4. Include protein, carbs, and fats for each meal
-5. Create 4 home workouts (bodyweight exercises)
-6. Create 4 gym workouts (with equipment)
+5. Create 4 home workouts (bodyweight exercises) - use DIFFERENT exercises than typical routines
+6. Create 4 gym workouts (with equipment) - vary the exercises and rep ranges
 7. Workouts should be appropriate for the user's fitness level
+8. **VARY THE MEAL OPTIONS**: Use different cuisines, ingredients, and preparation methods. Avoid repeating the same meals from previous requests.
 
 **Response Format (JSON only):**
 {{
@@ -324,8 +334,8 @@ Focus on creating a plan that is:
   ]
 }}
 
-Ensure the total calories sum to approximately {dailyCalorieTarget} and all meals fit the {dietType} diet.`,
-        inputVariables: ['age', 'gender', 'weight', 'height', 'bmi', 'dietType', 'dailyCalorieTarget'],
+Ensure the total calories sum to approximately {dailyCalorieTarget} and all meals fit the {dietType} diet. Remember to provide VARIED and DIFFERENT meals and workouts.`,
+        inputVariables: ['age', 'gender', 'weight', 'height', 'bmi', 'dietType', 'dailyCalorieTarget', 'variationNote'],
       });
 
       const mealWorkoutChain = new LLMChain({
@@ -342,6 +352,7 @@ Ensure the total calories sum to approximately {dailyCalorieTarget} and all meal
         bmi: bmi.toString(),
         dietType: userDietType,
         dailyCalorieTarget: targetCalories.toString(),
+        variationNote: variationNote,
       };
 
       // Add timeout to AI call to prevent hanging
@@ -350,15 +361,41 @@ Ensure the total calories sum to approximately {dailyCalorieTarget} and all meal
       
       let response;
       try {
-        // Try calling with a shorter timeout first to catch errors faster
-        // Increase timeout to 30 seconds as API calls can be slow
-        response = await Promise.race([
-          mealWorkoutChain.call(input),
-          new Promise<never>((_, reject) => 
-            setTimeout(() => reject(new Error('AI generation timeout after 30 seconds')), 30000)
-          )
-        ]);
-        logger.info('✅ AI service responded successfully');
+        // Format the prompt
+        const promptText = await mealWorkoutPrompt.format(input);
+        logger.info('Prompt formatted, attempting AI call...');
+        
+        // Try direct REST API first (more reliable than LangChain)
+        if (this.model && this.initialized) {
+          try {
+            logger.info('Trying LangChain first...');
+            const modelResponse = await Promise.race([
+              this.model.invoke(promptText),
+              new Promise<never>((_, reject) => 
+                setTimeout(() => reject(new Error('LangChain timeout')), 15000)
+              )
+            ]);
+            
+            // Convert response to expected format
+            response = {
+              text: typeof modelResponse.content === 'string' 
+                ? modelResponse.content 
+                : JSON.stringify(modelResponse.content)
+            };
+            
+            logger.info('✅ AI service responded successfully via LangChain');
+          } catch (langchainError: any) {
+            // If LangChain fails, try direct REST API call
+            logger.warn('LangChain call failed, trying direct REST API...', langchainError.message);
+            response = await this.callDirectAPI(promptText, apiKey.trim());
+            logger.info('✅ AI service responded successfully via direct API');
+          }
+        } else {
+          // Use direct API if model not initialized
+          logger.info('Using direct REST API (LangChain not initialized)...');
+          response = await this.callDirectAPI(promptText, apiKey.trim());
+          logger.info('✅ AI service responded successfully via direct API');
+        }
       } catch (error: any) {
         // Log detailed error information
         logger.error('❌ AI service call failed:', {
@@ -368,12 +405,13 @@ Ensure the total calories sum to approximately {dailyCalorieTarget} and all meal
         });
         
         if (error.message?.includes('timeout')) {
-          logger.error('⏱️ AI generation timed out after 15 seconds');
+          logger.error('⏱️ AI generation timed out');
           logger.error('💡 Possible causes:');
           logger.error('   1. Network connectivity issues');
           logger.error('   2. Invalid or expired API key');
           logger.error('   3. API quota exceeded');
           logger.error('   4. Google API service temporarily unavailable');
+          logger.error('   5. Model name might not be compatible with LangChain version');
         } else if (error.message?.includes('API key') || error.message?.includes('authentication')) {
           logger.error('🔑 API key authentication error');
           logger.error('   Please verify your GOOGLE_API_KEY is correct and active');
@@ -387,15 +425,55 @@ Ensure the total calories sum to approximately {dailyCalorieTarget} and all meal
       // Parse the AI response
       let aiResponse;
       try {
+        logger.info('Raw AI response text (first 500 chars):', response.text.substring(0, 500));
         const jsonMatch = response.text.match(/\{[\s\S]*\}/);
         if (jsonMatch) {
           aiResponse = JSON.parse(jsonMatch[0]);
+          logger.info('Parsed AI response structure:', {
+            hasMeals: !!aiResponse.meals,
+            mealsCount: aiResponse.meals?.length || 0,
+            hasHomeWorkouts: !!aiResponse.homeWorkouts,
+            homeWorkoutsCount: aiResponse.homeWorkouts?.length || 0,
+            hasGymWorkouts: !!aiResponse.gymWorkouts,
+            gymWorkoutsCount: aiResponse.gymWorkouts?.length || 0,
+            firstMealName: aiResponse.meals?.[0]?.name || 'N/A'
+          });
         } else {
+          logger.error('No JSON found in AI response. Full response:', response.text);
           throw new Error('No valid JSON found in AI response');
         }
-      } catch (parseError) {
-        logger.error('Failed to parse AI meal/workout response:', parseError);
+      } catch (parseError: any) {
+        logger.error('Failed to parse AI meal/workout response:', {
+          error: parseError.message,
+          responsePreview: response.text?.substring(0, 200)
+        });
         return this.getFallbackMealWorkoutPlan(targetCalories, userDietType);
+      }
+
+      // Validate that we have the required data
+      if (!aiResponse.meals || !Array.isArray(aiResponse.meals) || aiResponse.meals.length === 0) {
+        logger.error('AI response missing or invalid meals array:', aiResponse);
+        return this.getFallbackMealWorkoutPlan(targetCalories, userDietType);
+      }
+
+      if (!aiResponse.homeWorkouts || !Array.isArray(aiResponse.homeWorkouts) || aiResponse.homeWorkouts.length === 0) {
+        logger.warn('AI response missing home workouts, using defaults');
+        aiResponse.homeWorkouts = [
+          { name: 'Push-ups', sets: 3, reps: 15, icon: '💪', description: 'Full body strength exercise' },
+          { name: 'Squats', sets: 3, reps: 20, icon: '🦵', description: 'Lower body strength' },
+          { name: 'Plank', sets: 3, reps: '60s', icon: '🧘', description: 'Core strength' },
+          { name: 'Jumping Jacks', sets: 3, reps: 30, icon: '🏃', description: 'Cardio exercise' },
+        ];
+      }
+
+      if (!aiResponse.gymWorkouts || !Array.isArray(aiResponse.gymWorkouts) || aiResponse.gymWorkouts.length === 0) {
+        logger.warn('AI response missing gym workouts, using defaults');
+        aiResponse.gymWorkouts = [
+          { name: 'Bench Press', sets: 4, reps: 10, icon: '🏋️', description: 'Chest and triceps' },
+          { name: 'Deadlifts', sets: 4, reps: 8, icon: '💪', description: 'Full body compound' },
+          { name: 'Lat Pulldown', sets: 3, reps: 12, icon: '🔥', description: 'Back and biceps' },
+          { name: 'Leg Press', sets: 4, reps: 12, icon: '🦵', description: 'Lower body strength' },
+        ];
       }
 
       // Calculate macros
@@ -441,6 +519,49 @@ Ensure the total calories sum to approximately {dailyCalorieTarget} and all meal
       const targetCalories = dailyCalorieTarget || userProfile.dailyCalorieTarget || 2000;
       const userDietType = dietType || userProfile.dietType || 'balanced';
       return this.getFallbackMealWorkoutPlan(targetCalories, userDietType);
+    }
+  }
+
+  // Direct REST API call as fallback when LangChain fails
+  private async callDirectAPI(prompt: string, apiKey: string): Promise<{ text: string }> {
+    try {
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+      
+      const apiResponse = await Promise.race([
+        fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            contents: [{
+              parts: [{
+                text: prompt
+              }]
+            }]
+          })
+        }),
+        new Promise<never>((_, reject) => 
+          setTimeout(() => reject(new Error('Direct API timeout')), 25000)
+        )
+      ]);
+
+      if (!apiResponse.ok) {
+        const errorText = await apiResponse.text();
+        throw new Error(`API error: ${apiResponse.status} - ${errorText}`);
+      }
+
+      const data = await apiResponse.json();
+      const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+      
+      if (!text) {
+        throw new Error('No text in API response');
+      }
+
+      return { text };
+    } catch (error: any) {
+      logger.error('Direct API call failed:', error.message);
+      throw error;
     }
   }
 
@@ -511,29 +632,21 @@ Ensure the total calories sum to approximately {dailyCalorieTarget} and all meal
         return false;
       }
       
-      logger.info('Testing AI service availability...');
-      const testPrompt = new PromptTemplate({
-        template: 'Say "AI service is working"',
-        inputVariables: [],
-      });
-
-      const chain = new LLMChain({
-        llm: this.model,
-        prompt: testPrompt,
-      });
-
-      // Add timeout to availability check
-      await Promise.race([
-        chain.call({}),
+      logger.info('Testing AI service availability with simple call...');
+      
+      // Use a simpler direct call instead of LLMChain for testing
+      const testResponse = await Promise.race([
+        this.model.invoke('Say "OK"'),
         new Promise<never>((_, reject) => 
-          setTimeout(() => reject(new Error('Availability check timeout')), 5000)
+          setTimeout(() => reject(new Error('Availability check timeout')), 10000)
         )
       ]);
       
-      logger.info('✅ AI service is available');
+      logger.info('✅ AI service is available', { response: testResponse?.content?.substring(0, 50) });
       return true;
     } catch (error: any) {
       logger.error('❌ AI service availability check failed:', error.message);
+      logger.error('Error details:', error);
       return false;
     }
   }

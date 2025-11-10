@@ -70,3 +70,57 @@
 2025-11-05 00:59:24:5924 [31merror[39m: [31m   2. Invalid or expired API key[39m
 2025-11-05 00:59:24:5924 [31merror[39m: [31m   3. API quota exceeded[39m
 2025-11-05 00:59:24:5924 [31merror[39m: [31m   4. Google API service temporarily unavailable[39m
+2025-11-06 00:14:43:1443 [31merror[39m: [31m❌ AI service call failed: AI generation timeout after 30 seconds[39m
+2025-11-06 00:14:43:1443 [31merror[39m: [31m⏱️ AI generation timed out after 15 seconds[39m
+2025-11-06 00:14:43:1443 [31merror[39m: [31m💡 Possible causes:[39m
+2025-11-06 00:14:43:1443 [31merror[39m: [31m   1. Network connectivity issues[39m
+2025-11-06 00:14:43:1443 [31merror[39m: [31m   2. Invalid or expired API key[39m
+2025-11-06 00:14:43:1443 [31merror[39m: [31m   3. API quota exceeded[39m
+2025-11-06 00:14:43:1443 [31merror[39m: [31m   4. Google API service temporarily unavailable[39m
+2025-11-06 01:03:30:330 [31merror[39m: [31m❌ AI service call failed: AI generation timeout after 30 seconds[39m
+2025-11-06 01:03:30:330 [31merror[39m: [31m⏱️ AI generation timed out after 15 seconds[39m
+2025-11-06 01:03:30:330 [31merror[39m: [31m💡 Possible causes:[39m
+2025-11-06 01:03:30:330 [31merror[39m: [31m   1. Network connectivity issues[39m
+2025-11-06 01:03:30:330 [31merror[39m: [31m   2. Invalid or expired API key[39m
+2025-11-06 01:03:30:330 [31merror[39m: [31m   3. API quota exceeded[39m
+2025-11-06 01:03:30:330 [31merror[39m: [31m   4. Google API service temporarily unavailable[39m
+2025-11-06 01:12:08:128 [31merror[39m: [31m❌ AI service call failed: AI generation timeout after 30 seconds[39m
+2025-11-06 01:12:08:128 [31merror[39m: [31m⏱️ AI generation timed out after 15 seconds[39m
+2025-11-06 01:12:08:128 [31merror[39m: [31m💡 Possible causes:[39m
+2025-11-06 01:12:08:128 [31merror[39m: [31m   1. Network connectivity issues[39m
+2025-11-06 01:12:08:128 [31merror[39m: [31m   2. Invalid or expired API key[39m
+2025-11-06 01:12:08:128 [31merror[39m: [31m   3. API quota exceeded[39m
+2025-11-06 01:12:08:128 [31merror[39m: [31m   4. Google API service temporarily unavailable[39m
+2025-11-06 23:18:54:1854 [31merror[39m: [31m❌ AI service call failed: AI generation timeout after 30 seconds[39m
+2025-11-06 23:18:54:1854 [31merror[39m: [31m⏱️ AI generation timed out after 15 seconds[39m
+2025-11-06 23:18:54:1854 [31merror[39m: [31m💡 Possible causes:[39m
+2025-11-06 23:18:54:1854 [31merror[39m: [31m   1. Network connectivity issues[39m
+2025-11-06 23:18:54:1854 [31merror[39m: [31m   2. Invalid or expired API key[39m
+2025-11-06 23:18:54:1854 [31merror[39m: [31m   3. API quota exceeded[39m
+2025-11-06 23:18:54:1854 [31merror[39m: [31m   4. Google API service temporarily unavailable[39m
+2025-11-06 23:19:24:1924 [31merror[39m: [31m❌ AI service call failed: AI generation timeout after 30 seconds[39m
+2025-11-06 23:19:24:1924 [31merror[39m: [31m⏱️ AI generation timed out after 15 seconds[39m
+2025-11-06 23:19:24:1924 [31merror[39m: [31m💡 Possible causes:[39m
+2025-11-06 23:19:24:1924 [31merror[39m: [31m   1. Network connectivity issues[39m
+2025-11-06 23:19:24:1924 [31merror[39m: [31m   2. Invalid or expired API key[39m
+2025-11-06 23:19:24:1924 [31merror[39m: [31m   3. API quota exceeded[39m
+2025-11-06 23:19:24:1924 [31merror[39m: [31m   4. Google API service temporarily unavailable[39m
+2025-11-06 23:22:41:2241 [31merror[39m: [31m❌ AI service call failed: AI generation timeout after 30 seconds[39m
+2025-11-06 23:22:41:2241 [31merror[39m: [31m⏱️ AI generation timed out after 15 seconds[39m
+2025-11-06 23:22:41:2241 [31merror[39m: [31m💡 Possible causes:[39m
+2025-11-06 23:22:41:2241 [31merror[39m: [31m   1. Network connectivity issues[39m
+2025-11-06 23:22:41:2241 [31merror[39m: [31m   2. Invalid or expired API key[39m
+2025-11-06 23:22:41:2241 [31merror[39m: [31m   3. API quota exceeded[39m
+2025-11-06 23:22:41:2241 [31merror[39m: [31m   4. Google API service temporarily unavailable[39m
+2025-11-06 23:23:07:237 [31merror[39m: [31m❌ AI service call failed: AI generation timeout after 30 seconds[39m
+2025-11-06 23:23:07:237 [31merror[39m: [31m⏱️ AI generation timed out after 15 seconds[39m
+2025-11-06 23:23:07:237 [31merror[39m: [31m💡 Possible causes:[39m
+2025-11-06 23:23:07:237 [31merror[39m: [31m   1. Network connectivity issues[39m
+2025-11-06 23:23:07:237 [31merror[39m: [31m   2. Invalid or expired API key[39m
+2025-11-06 23:23:07:237 [31merror[39m: [31m   3. API quota exceeded[39m
+2025-11-06 23:23:07:237 [31merror[39m: [31m   4. Google API service temporarily unavailable[39m
+2025-11-06 23:41:39:4139 [31merror[39m: [31mFailed to parse AI meal/workout response: Expected ',' or '}' after property value in JSON at position 1304 (line 16 column 49)[39m
+2025-11-07 12:51:03:513 [31merror[39m: [31mDirect API call failed:[39m
+2025-11-07 12:51:03:513 [31merror[39m: [31m❌ AI service call failed: fetch failed[39m
+2025-11-07 12:51:03:513 [31merror[39m: [31m❓ Unknown error from AI service[39m
+2025-11-07 12:51:03:513 [31merror[39m: [31mError generating meal and workout plan: fetch failed[39m

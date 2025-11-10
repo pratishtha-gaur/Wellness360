@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'motion/react';
 import { Apple, Dumbbell, Home, Building2, Flame, RefreshCw } from 'lucide-react';
 import { Card } from './ui/card';
@@ -33,21 +33,65 @@ interface Macros {
   fatsPercent: number;
 }
 
+// Get today's date string (YYYY-MM-DD) - helper function
+const getTodayDateString = (): string => {
+  const today = new Date();
+  return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+};
+
 export function DietFitness() {
+  // Load cache synchronously on component initialization - use useMemo to only compute once
+  const initialCache = useMemo(() => {
+    try {
+      const cached = localStorage.getItem('mealWorkoutPlan');
+      const cachedDate = localStorage.getItem('mealWorkoutPlanDate');
+      const today = getTodayDateString();
+      
+      if (cached && cachedDate === today) {
+        const data = JSON.parse(cached);
+        return {
+          meals: data.meals || [],
+          homeWorkouts: data.homeWorkouts || [],
+          gymWorkouts: data.gymWorkouts || [],
+          macros: data.macros || {
+            protein: 110,
+            carbs: 180,
+            fats: 55,
+            proteinPercent: 40,
+            carbsPercent: 35,
+            fatsPercent: 25,
+          },
+          targetCalories: data.targetCalories || 2000,
+          hasCache: true
+        };
+      }
+    } catch (error) {
+      console.error('Error loading cached meal plan:', error);
+    }
+    return {
+      meals: [],
+      homeWorkouts: [],
+      gymWorkouts: [],
+      macros: {
+        protein: 110,
+        carbs: 180,
+        fats: 55,
+        proteinPercent: 40,
+        carbsPercent: 35,
+        fatsPercent: 25,
+      },
+      targetCalories: 2000,
+      hasCache: false
+    };
+  }, []); // Only compute once on mount
+  
   const [location, setLocation] = useState<'home' | 'gym'>('home');
-  const [meals, setMeals] = useState<Meal[]>([]);
-  const [homeWorkouts, setHomeWorkouts] = useState<Workout[]>([]);
-  const [gymWorkouts, setGymWorkouts] = useState<Workout[]>([]);
-  const [macros, setMacros] = useState<Macros>({
-    protein: 110,
-    carbs: 180,
-    fats: 55,
-    proteinPercent: 40,
-    carbsPercent: 35,
-    fatsPercent: 25,
-  });
-  const [targetCalories, setTargetCalories] = useState(2000);
-  const [isLoading, setIsLoading] = useState(true);
+  const [meals, setMeals] = useState<Meal[]>(initialCache.meals);
+  const [homeWorkouts, setHomeWorkouts] = useState<Workout[]>(initialCache.homeWorkouts);
+  const [gymWorkouts, setGymWorkouts] = useState<Workout[]>(initialCache.gymWorkouts);
+  const [macros, setMacros] = useState<Macros>(initialCache.macros);
+  const [targetCalories, setTargetCalories] = useState(initialCache.targetCalories);
+  const [isLoading, setIsLoading] = useState(!initialCache.hasCache);
 
   // Get user email from localStorage
   const getUserEmail = (): string | null => {
@@ -59,7 +103,7 @@ export function DietFitness() {
   };
 
   // Fetch meal and workout plan from backend
-  const fetchMealWorkoutPlan = async () => {
+  const fetchMealWorkoutPlan = async (forceRefresh: boolean = false) => {
     const email = getUserEmail();
     if (!email) {
       // Fallback to default data if no email
@@ -69,14 +113,25 @@ export function DietFitness() {
       return;
     }
 
+    // If forcing refresh, clear cache first
+    if (forceRefresh) {
+      try {
+        localStorage.removeItem('mealWorkoutPlan');
+        localStorage.removeItem('mealWorkoutPlanDate');
+        console.log('Cache cleared for fresh meal plan generation');
+      } catch (e) {
+        // Ignore localStorage errors
+      }
+    }
+
     setIsLoading(true);
     try {
       const url = `/api/wellness/${encodeURIComponent(email)}/meal-workout-plan`;
       console.log('Fetching meal/workout plan from:', url);
       
-      // Add timeout to prevent hanging (backend has 15s timeout, so we use 20s here)
+      // Add timeout to prevent hanging (backend can take up to 25s for direct API, so we use 35s here)
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 20000); // 20 second timeout
+      const timeoutId = setTimeout(() => controller.abort(), 35000); // 35 second timeout to allow for AI generation
       
       const res = await fetch(url, {
         signal: controller.signal
@@ -87,6 +142,8 @@ export function DietFitness() {
       if (res.ok) {
         const json = await res.json();
         console.log('API response:', json);
+        console.log('isAIGenerated flag:', json?.data?.isAIGenerated);
+        console.log('First meal name:', json?.data?.meals?.[0]?.name);
         const data = json?.data;
         if (data && data.meals && data.meals.length > 0) {
           setMeals(data.meals || []);
@@ -99,16 +156,28 @@ export function DietFitness() {
           const totalCals = data.meals?.reduce((sum: number, meal: Meal) => sum + meal.calories, 0) || 2000;
           setTargetCalories(totalCals);
           
-          // Check if it's AI-generated or fallback (simple heuristic)
-          const isAIGenerated = !data.meals.some((meal: Meal) => 
-            meal.name === 'Oatmeal with berries & almonds' || 
-            meal.name === 'Greek yogurt with honey'
-          );
+          // Cache the data for today (exclude isAIGenerated flag from cache)
+          const today = getTodayDateString();
+          try {
+            localStorage.setItem('mealWorkoutPlan', JSON.stringify({
+              meals: data.meals,
+              homeWorkouts: data.homeWorkouts,
+              gymWorkouts: data.gymWorkouts,
+              macros: data.macros,
+              targetCalories: totalCals
+            }));
+            localStorage.setItem('mealWorkoutPlanDate', today);
+          } catch (e) {
+            // Ignore localStorage errors
+          }
           
-          if (isAIGenerated) {
-            toast.success('Loaded AI-generated personalized meal and workout plan! 🎉');
+          // Show success toast only for AI-generated plans
+          console.log('Checking isAIGenerated:', data.isAIGenerated, typeof data.isAIGenerated);
+          if (data.isAIGenerated === true) {
+            console.log('Showing success toast for AI-generated plan');
+            toast.success('AI-generated meal and workout plan loaded successfully! 🎉✨');
           } else {
-            toast.success('Loaded meal and workout plan (using defaults - AI not configured)');
+            console.log('Not showing toast - isAIGenerated is:', data.isAIGenerated);
           }
         } else {
           console.warn('API returned empty or invalid data, using defaults');
@@ -131,16 +200,16 @@ export function DietFitness() {
         }
         console.error('API error:', res.status, errorMessage);
         setDefaultData();
-        toast.error('Using default recommendations. ' + errorMessage);
+        // Silently use defaults without showing error message
       }
     } catch (error: any) {
       console.error('Error fetching meal/workout plan:', error);
-      if (error.name === 'AbortError') {
-        console.error('Request timed out');
-        toast.error('Request timed out. Using default recommendations.');
-      } else {
-        toast.error('Failed to load personalized plan. Using default recommendations.');
+      // Check if it's a timeout error
+      if (error.name === 'AbortError' || error.message?.includes('timeout') || error.message?.includes('aborted')) {
+        console.warn('Request timed out - backend may still be processing. Try refreshing again.');
+        toast.error('Request timed out. The AI is taking longer than expected. Please try refreshing again.');
       }
+      // Silently use defaults without showing error messages for other errors
       setDefaultData();
     } finally {
       // Always set loading to false, even if there's an error
@@ -172,9 +241,61 @@ export function DietFitness() {
     setTargetCalories(2000);
   };
 
+  // Only fetch if we don't have cached data for today
   useEffect(() => {
+    // Check localStorage directly to see if we have valid cache for today
+    try {
+      const cached = localStorage.getItem('mealWorkoutPlan');
+      const cachedDate = localStorage.getItem('mealWorkoutPlanDate');
+      const today = getTodayDateString();
+      
+      // If we have valid cache for today, don't fetch
+      if (cached && cachedDate === today) {
+        console.log('Using cached meal plan, skipping fetch');
+        return;
+      }
+    } catch (error) {
+      console.error('Error checking cache:', error);
+    }
+    
+    // Only fetch if no valid cache exists
+    console.log('No cache found, fetching meal plan...');
     fetchMealWorkoutPlan();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Check if date changed - ONLY when date actually changes, not on tab switches
+  useEffect(() => {
+    // Only set up date checking if we have valid cache
+    if (!initialCache.hasCache) {
+      return;
+    }
+
+    const checkDateChange = () => {
+      const today = getTodayDateString();
+      const cachedDate = localStorage.getItem('mealWorkoutPlanDate');
+      
+      // Only refresh if date changed AND we have cached data
+      if (cachedDate && cachedDate !== today && meals.length > 0) {
+        console.log('Date changed, refreshing meal plan...');
+        fetchMealWorkoutPlan();
+      }
+    };
+
+    // Check on mount only (not on every render)
+    checkDateChange();
+    
+    // Set up interval to check date change once per minute (not on every focus)
+    // This is more efficient than listening to focus events
+    const intervalId = setInterval(() => {
+      checkDateChange();
+    }, 60000); // Check every minute
+    
+    return () => {
+      clearInterval(intervalId);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Empty deps - only run once on mount
 
   const workouts = location === 'home' ? homeWorkouts : gymWorkouts;
   const totalCalories = meals.reduce((sum, meal) => sum + meal.calories, 0);
@@ -267,11 +388,11 @@ export function DietFitness() {
                 <h3 className="text-white">Today's Meal Plan</h3>
               </div>
               <Button
-                onClick={fetchMealWorkoutPlan}
+                onClick={() => fetchMealWorkoutPlan(true)}
                 disabled={isLoading}
                 size="sm"
                 variant="outline"
-                className="border-white/20 text-white hover:bg-white/10"
+                className="border-emerald-400/50 bg-emerald-500/20 text-emerald-100 hover:bg-emerald-500/30 hover:border-emerald-400"
               >
                 <RefreshCw size={16} className={`mr-2 ${isLoading ? 'animate-spin' : ''}`} />
                 Refresh
@@ -336,7 +457,9 @@ export function DietFitness() {
                 <Button
                   variant={location === 'home' ? 'default' : 'outline'}
                   onClick={() => setLocation('home')}
-                  className={location === 'home' ? 'bg-emerald-500 hover:bg-emerald-600' : 'border-white/20 text-white hover:bg-white/10'}
+                  className={location === 'home' 
+                    ? 'bg-emerald-500 hover:bg-emerald-600 text-white' 
+                    : 'border-emerald-400/50 bg-emerald-500/20 text-emerald-100 hover:bg-emerald-500/30 hover:border-emerald-400'}
                 >
                   <Home size={16} className="mr-2" />
                   Home
@@ -344,7 +467,9 @@ export function DietFitness() {
                 <Button
                   variant={location === 'gym' ? 'default' : 'outline'}
                   onClick={() => setLocation('gym')}
-                  className={location === 'gym' ? 'bg-emerald-500 hover:bg-emerald-600' : 'border-white/20 text-white hover:bg-white/10'}
+                  className={location === 'gym' 
+                    ? 'bg-emerald-500 hover:bg-emerald-600 text-white' 
+                    : 'border-emerald-400/50 bg-emerald-500/20 text-emerald-100 hover:bg-emerald-500/30 hover:border-emerald-400'}
                 >
                   <Building2 size={16} className="mr-2" />
                   Gym
