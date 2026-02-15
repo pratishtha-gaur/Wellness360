@@ -15,7 +15,6 @@ if (process.env.GOOGLE_API_KEY) {
 }
 
 import express from 'express';
-import path from 'path';
 import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
